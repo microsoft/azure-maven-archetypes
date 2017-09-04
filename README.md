@@ -1,3 +1,10 @@
+# Maven Archetypes for Azure
+
+This repo contains Maven Archetypes for Azure. The following table lists all existing Maven Archetypes.
+
+Archetype Artifact Id | Archetype Group Id | Maven Central Version
+---|---|---
+`azure-functions-archetype`|`com.microsoft.azure`|*Under Development*
 
 # Contributing
 

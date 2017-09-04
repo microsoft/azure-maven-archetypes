@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.microsoft.azure</groupId>
+    <artifactId>azure-maven-archetypes</artifactId>
+    <version>0.1.4</version>
+    <packaging>pom</packaging>
+    <name>Maven Archetypes for Azure</name>
+    <description>Maven Archetypes for Microsoft Azure services</description>
+    <url>https://github.com/microsoft/azure-maven-archetypes</url>
+
+    <licenses>
+        <license>
+            <name>MIT License</name>
+            <url>https://opensource.org/licenses/MIT</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <scm>
+        <connection>scm:git:https://github.com/microsoft/azure-maven-archetypes</connection>
+        <developerConnection>scm:git:git@github.com:microsoft/azure-maven-archetypes</developerConnection>
+        <url>https://github.com/microsoft/azure-maven-archetypes</url>
+        <tag>HEAD</tag>
+    </scm>
+
+    <developers>
+        <developer>
+            <id>xscript</id>
+            <name>Kevin Zhao</name>
+            <email>kevinzha@microsoft.com</email>
+        </developer>
+    </developers>
+
+    <modules>
+        <module>azure-functions-archetype</module>
+    </modules>
+</project>
