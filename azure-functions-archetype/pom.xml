@@ -38,4 +38,23 @@
             <email>kevinzha@microsoft.com</email>
         </developer>
     </developers>
+
+    <repositories>
+        <repository>
+            <id>azure-functions-private-preview</id>
+            <url>https://www.myget.org/F/azure-function/maven/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+    <distributionManagement>
+        <repository>
+            <id>azure-functions-private-preview</id>
+            <url>https://www.myget.org/F/azure-function/maven/</url>
+        </repository>
+    </distributionManagement>
 </project>
