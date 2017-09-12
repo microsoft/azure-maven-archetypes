@@ -56,7 +56,13 @@
                 <configuration>
                     <resourceGroup>java-functions-group</resourceGroup>
                     <appName>${functionAppName}</appName>
-                    <region>westus</region>
+                    <region>westus2</region>
+                    <appSettings>
+                        <property>
+                            <name>FUNCTIONS_EXTENSION_VERSION</name>
+                            <value>beta</value>
+                        </property>
+                    </appSettings>
                 </configuration>
                 <executions>
                     <execution>
