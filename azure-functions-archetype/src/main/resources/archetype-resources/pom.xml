@@ -18,31 +18,6 @@
         <functionAppName>${appName}</functionAppName>
     </properties>
 
-    <repositories>
-        <repository>
-            <id>azure-functions-private-preview</id>
-            <url>https://www.myget.org/F/azure-function/maven/</url>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-        </repository>
-    </repositories>
-    <pluginRepositories>
-        <pluginRepository>
-            <id>azure-functions-private-preview</id>
-            <url>https://www.myget.org/F/azure-function/maven/</url>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-        </pluginRepository>
-    </pluginRepositories>
-
     <dependencies>
         <dependency>
             <groupId>com.microsoft.azure</groupId>
@@ -69,7 +44,7 @@
                 <plugin>
                     <groupId>com.microsoft.azure</groupId>
                     <artifactId>azure-functions-maven-plugin</artifactId>
-                    <version>0.1.5-SNAPSHOT</version>
+                    <version>0.1.4</version>
                 </plugin>
             </plugins>
         </pluginManagement>
