@@ -7,6 +7,9 @@
         <requiredProperty key="appName">
             <defaultValue>${artifactId.toLowerCase()}-${package.getClass().forName("java.time.LocalDateTime").getMethod("now").invoke(null).format($package.Class.forName("java.time.format.DateTimeFormatter").getMethod("ofPattern", $package.Class).invoke(null, "yyyyMMddHHmmssSSS"))}</defaultValue>
         </requiredProperty>
+        <requiredProperty key="appRegion">
+            <defaultValue>westus</defaultValue>
+        </requiredProperty>
     </requiredProperties>
 
     <fileSets>

@@ -4,9 +4,12 @@ This repo contains Maven Archetypes for Azure. The following table lists all exi
 
 Archetype Artifact Id | Archetype Group Id | Maven Central Version
 ---|---|---
-`azure-functions-archetype`|`com.microsoft.azure`|*Under Development*
+`azure-functions-archetype`|`com.microsoft.azure`| [![Maven Central](https://img.shields.io/maven-central/v/com.microsoft.azure/azure-functions-archetype.svg)](http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22com.microsoft.azure%22%20AND%20a%3A%22azure-functions-archetype%22)
 
-# Contributing
+### Reporting Issues and Feedback
+If you encounter any bugs with the Maven Archetypes, please file an issue in the [Issues](https://github.com/microsoft/azure-maven-archetypes/issues) section of our GitHub repo.
+
+#### Contributing
 
 This project welcomes contributions and suggestions.  Most contributions require you to agree to a
 Contributor License Agreement (CLA) declaring that you have the right to, and actually do, grant us
