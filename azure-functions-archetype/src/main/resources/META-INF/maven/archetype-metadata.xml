@@ -4,8 +4,15 @@
                       xsi:schemaLocation="http://maven.apache.org/plugins/maven-archetype-plugin/archetype-descriptor/1.0.0 http://maven.apache.org/xsd/archetype-descriptor-1.0.0.xsd"
                       name="azure-functions-archetype" partial="true">
     <requiredProperties>
+        <!-- Default value is ${artifactId}-${timestamp} -->
         <requiredProperty key="appName">
             <defaultValue>${artifactId.toLowerCase()}-${package.getClass().forName("java.time.LocalDateTime").getMethod("now").invoke(null).format($package.Class.forName("java.time.format.DateTimeFormatter").getMethod("ofPattern", $package.Class).invoke(null, "yyyyMMddHHmmssSSS"))}</defaultValue>
+        </requiredProperty>
+
+        <!-- This is a work around of issue at https://issues.apache.org/jira/browse/ARCHETYPE-308 -->
+        <!-- By using below expression, Maven Archetype will ask for user input with default value "westus" -->
+        <requiredProperty key="appRegion">
+            <defaultValue>${package.getClass().forName("java.lang.StringBuilder").getConstructor($package.getClass().forName("java.lang.String")).newInstance("westus").toString()}</defaultValue>
         </requiredProperty>
     </requiredProperties>
 
