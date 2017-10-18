@@ -11,6 +11,7 @@
 
     <name>Maven Archetype for Azure Functions</name>
     <description>Maven Archetype for Azure Functions</description>
+    <url>https://github.com/microsoft/azure-maven-archetypes</url>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
