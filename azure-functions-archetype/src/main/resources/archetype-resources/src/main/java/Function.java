@@ -18,7 +18,7 @@ public class Function {
         context.getLogger().info("Java HTTP trigger processed a request.");
 
         // Parse query parameter
-        String name = request.getQueryParameters().get("name");
+        String name = request.getQueryParameters().get("name").toString();
 
         if (name == null) {
             // Get request body
