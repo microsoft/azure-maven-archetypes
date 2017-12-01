@@ -5,6 +5,7 @@ import com.microsoft.azure.serverless.functions.*;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 import java.util.logging.Logger;
 
 import static org.junit.Assert.assertSame;
@@ -24,11 +25,14 @@ public class FunctionTest {
     @Test
     public void testHello() throws Exception {
         // Setup
-        final HttpRequestMessage req = mock(HttpRequestMessage.class);
+        final HttpRequestMessage<Optional<String>> req = mock(HttpRequestMessage.class);
 
         final Map<String, String> queryParams = new HashMap<>();
         queryParams.put("name", "Azure");
         doReturn(queryParams).when(req).getQueryParameters();
+
+        final Optional<String> queryBody = Optional.empty();
+        doReturn(queryBody).when(req).getBody();
 
         final HttpResponseMessage res = mock(HttpResponseMessage.class);
         doReturn(res).when(req).createResponse(anyInt(), anyString());
