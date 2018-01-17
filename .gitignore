@@ -3,6 +3,9 @@
 
 # Build output
 target/
+.settings
+.project
+.classpath
 
 # Log file
 *.log
@@ -27,3 +30,6 @@ hs_err_pid*
 # IntelliJ
 .idea
 *.iml
+
+# VS Code
+.vscode
