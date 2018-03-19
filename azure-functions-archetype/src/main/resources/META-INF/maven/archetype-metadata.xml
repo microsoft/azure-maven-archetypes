@@ -14,6 +14,10 @@
         <requiredProperty key="appRegion">
             <defaultValue>${package.getClass().forName("java.lang.StringBuilder").getConstructor($package.getClass().forName("java.lang.String")).newInstance("westus").toString()}</defaultValue>
         </requiredProperty>
+
+        <requiredProperty key="resourceGroup">
+            <defaultValue>${package.getClass().forName("java.lang.StringBuilder").getConstructor($package.getClass().forName("java.lang.String")).newInstance("java-functions-group").toString()}</defaultValue>
+        </requiredProperty>
     </requiredProperties>
 
     <fileSets>
