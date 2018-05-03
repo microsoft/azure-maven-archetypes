@@ -25,7 +25,7 @@
         <dependency>
             <groupId>com.microsoft.azure</groupId>
             <artifactId>azure-functions-java-core</artifactId>
-            <version>1.0.0-beta-2</version>
+            <version>1.0.0-beta-3</version>
         </dependency>
 
         <!-- Test -->
@@ -53,7 +53,7 @@
                 <plugin>
                     <groupId>com.microsoft.azure</groupId>
                     <artifactId>azure-functions-maven-plugin</artifactId>
-                    <version>0.2.1</version>
+                    <version>1.0.0</version>
                 </plugin>
             </plugins>
         </pluginManagement>
@@ -140,6 +140,7 @@
                         <overWriteSnapshots>false</overWriteSnapshots>
                         <overWriteIfNewer>true</overWriteIfNewer>
                         <includeScope>runtime</includeScope>
+                        <excludeArtifactIds>com.microsoft.azure.azure-functions-java-core</excludeArtifactIds>
                     </configuration>
                     </execution>
                 </executions>
