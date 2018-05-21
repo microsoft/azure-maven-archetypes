@@ -53,7 +53,7 @@
                 <plugin>
                     <groupId>com.microsoft.azure</groupId>
                     <artifactId>azure-functions-maven-plugin</artifactId>
-                    <version>1.0.0</version>
+                    <version>1.0.0-beta-1</version>
                 </plugin>
             </plugins>
         </pluginManagement>
@@ -101,22 +101,6 @@
                                         <include>host.json</include>
                                         <include>local.settings.json</include>
                                     </includes>
-                                </resource>
-                            </resources>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>copy-bin</id>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>copy-resources</goal>
-                        </goals>
-                        <configuration>
-                            <overwrite>true</overwrite>
-                            <outputDirectory>${stagingDirectory}/bin</outputDirectory>
-                            <resources>
-                                <resource>
-                                    <directory>${project.basedir}/bin</directory>
                                 </resource>
                             </resources>
                         </configuration>
