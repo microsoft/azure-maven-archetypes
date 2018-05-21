@@ -124,7 +124,7 @@
                         <overWriteSnapshots>false</overWriteSnapshots>
                         <overWriteIfNewer>true</overWriteIfNewer>
                         <includeScope>runtime</includeScope>
-                        <excludeArtifactIds>com.microsoft.azure.azure-functions-java-core</excludeArtifactIds>
+                        <excludeArtifactIds>azure-functions-java-core</excludeArtifactIds>
                     </configuration>
                     </execution>
                 </executions>
