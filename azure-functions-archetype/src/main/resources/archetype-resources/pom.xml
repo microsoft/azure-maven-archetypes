@@ -14,8 +14,8 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
-        <azure.functions.maven.plugin.version>1.0.0-beta-1</azure.functions.maven.plugin.version>
-        <azure.functions.java.core.version>1.0.0-beta-3</azure.functions.java.core.version>
+        <azure.functions.maven.plugin.version>1.0.0-beta-2</azure.functions.maven.plugin.version>
+        <azure.functions.java.library.version>1.0.0-beta-4</azure.functions.java.core.version>
         <functionAppName>${appName}</functionAppName>
         <functionAppRegion>${appRegion}</functionAppRegion>
         <stagingDirectory>${project.build.directory}/azure-functions/${functionAppName}</stagingDirectory>
@@ -35,9 +35,9 @@
                 <version>2.4.0</version>
             </dependency>
             <dependency>
-                <groupId>com.microsoft.azure</groupId>
-                <artifactId>azure-functions-java-core</artifactId>
-                <version>${azure.functions.java.core.version}</version>
+                <groupId>com.microsoft.azure.functions</groupId>
+                <artifactId>azure-functions-java-library</artifactId>
+                <version>${azure.functions.java.library.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
@@ -45,7 +45,7 @@
     <dependencies>
         <dependency>
             <groupId>com.microsoft.azure</groupId>
-            <artifactId>azure-functions-java-core</artifactId>
+            <artifactId>azure-functions-java-library</artifactId>
         </dependency>
 
         <!-- Test -->
@@ -148,7 +148,7 @@
                             <overWriteSnapshots>false</overWriteSnapshots>
                             <overWriteIfNewer>true</overWriteIfNewer>
                             <includeScope>runtime</includeScope>
-                            <excludeArtifactIds>azure-functions-java-core</excludeArtifactIds>
+                            <excludeArtifactIds>azure-functions-java-library</excludeArtifactIds>
                         </configuration>
                     </execution>
                 </executions>
