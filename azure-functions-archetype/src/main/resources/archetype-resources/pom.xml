@@ -15,7 +15,7 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <azure.functions.maven.plugin.version>1.0.0-beta-2</azure.functions.maven.plugin.version>
-        <azure.functions.java.library.version>1.0.0-beta-4</azure.functions.java.core.version>
+        <azure.functions.java.library.version>1.0.0-beta-4</azure.functions.java.library.version>
         <functionAppName>${appName}</functionAppName>
         <functionAppRegion>${appRegion}</functionAppRegion>
         <stagingDirectory>${project.build.directory}/azure-functions/${functionAppName}</stagingDirectory>
@@ -44,7 +44,7 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.microsoft.azure</groupId>
+            <groupId>com.microsoft.azure.functions</groupId>
             <artifactId>azure-functions-java-library</artifactId>
         </dependency>
 
