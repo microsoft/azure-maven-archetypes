@@ -41,7 +41,7 @@ public class FunctionTest {
         doReturn(Logger.getGlobal()).when(context).getLogger();
 
         // Invoke
-        final HttpResponseMessage ret = new Function().hello(req, context);
+        final HttpResponseMessage ret = new Function().HttpTriggerJava(req, context);
 
         // Verify
         assertSame(res, ret);

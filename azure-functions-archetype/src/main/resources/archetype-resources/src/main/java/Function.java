@@ -13,8 +13,8 @@ public class Function {
      * 1. curl -d "HTTP Body" {your host}/api/hello
      * 2. curl {your host}/api/hello?name=HTTP%20Query
      */
-    @FunctionName("hello")
-    public HttpResponseMessage<String> hello(
+    @FunctionName("HttpTrigger-Java")
+    public HttpResponseMessage<String> HttpTriggerJava(
             @HttpTrigger(name = "req", methods = {"get", "post"}, authLevel = AuthorizationLevel.ANONYMOUS) HttpRequestMessage<Optional<String>> request,
             final ExecutionContext context) {
         context.getLogger().info("Java HTTP trigger processed a request.");
