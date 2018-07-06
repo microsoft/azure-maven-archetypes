@@ -11,8 +11,9 @@ You can use their default values or enter your own.
 
 Parameter Name | Default Value | Description
 ---|---|---
-`appName` | ${artifactId}-${timestamp} | Specifies the name of your Azure Function App, which will be used to package, run and deploy your project.
-`appRegion` | westus | Specifies the region of your Azure Function App, which will be used to create new Function App in Azure.
+`appName` | ${artifactId}-${timestamp} | Specifies the name of your Azure Functions, which will be used to package, run and deploy your project.
+`appRegion` | westus | Specifies the region of your Azure Functions, which will be used when creating the new Azure Functions.
+`resourceGroup` | java-functions-group | Specifies the resource group of your Azure Functions, which will be used when creating the new Azure Functions..
 
 ## Usage
 
@@ -25,3 +26,6 @@ mvn archetype:generate -DarchetypeGroupId=com.microsoft.azure -DarchetypeArtifac
 
 ### Batch Mode
 Refer to the example at [here](https://maven.apache.org/archetype/maven-archetype-plugin/examples/generate-batch.html) to generate project in batch mode.
+
+### More Information
+For more information about how to build/test the function project, please refer to the documents of [Maven Plugin for Azure Functions](https://github.com/Microsoft/azure-maven-plugins/blob/master/azure-functions-maven-plugin/README.md)
