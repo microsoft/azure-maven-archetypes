@@ -21,7 +21,7 @@ import static org.mockito.Mockito.mock;
  */
 public class FunctionTest {
     /**
-     * Unit test for hello method.
+     * Unit test for HttpTriggerJava method.
      */
     @Test
     public void testHttpTriggerJava() throws Exception {
