@@ -1,0 +1,28 @@
+# Build output
+target/
+*.class
+
+# Log file
+*.log
+
+# BlueJ files
+*.ctxt
+
+# Mobile Tools for Java (J2ME)
+.mtj.tmp/
+
+# Package Files #
+*.jar
+*.war
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+hs_err_pid*
+
+*.iml
+.idea/
+
+# macOS
+.DS_Store

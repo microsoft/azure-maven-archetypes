@@ -1,0 +1,16 @@
+FROM maven:3.5-jdk-8-alpine AS build-env
+RUN mvn org.apache.maven.plugins:maven-dependency-plugin:3.1.1:get -Dartifact=com.microsoft.azure.sdk.iot:iot-device-client:1.13.3 -DrepoUrl=https://repo.maven.apache.org/maven2/
+
+WORKDIR /app
+COPY . /app
+RUN mvn install -Dmaven.test.skip=true
+
+FROM openjdk:8-jdk-alpine
+WORKDIR /app
+COPY --from=build-env /app/target/${artifactId}-${version}-with-deps.jar ./app.jar
+
+RUN addgroup -g 1000 -S moduleuser && \
+    adduser -u 1000 -S moduleuser -G moduleuser
+USER moduleuser
+EXPOSE 5005/tcp
+ENTRYPOINT ["java","-agentlib:jdwp=transport=dt_socket,address=5005,server=y,suspend=n","-jar","./app.jar"]
