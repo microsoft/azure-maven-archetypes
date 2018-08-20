@@ -3,19 +3,15 @@ package $package;
 import com.microsoft.azure.sdk.iot.device.*;
 import com.microsoft.azure.sdk.iot.device.transport.IotHubConnectionStatus;
 
-
-public class App
-{
+public class App {
     private static MessageCallbackMqtt msgCallback = new MessageCallbackMqtt();
     private static EventCallback eventCallback = new EventCallback();
     private static final String INPUT_NAME = "input1";
     private static final String OUTPUT_NAME = "output1";
 
-    protected static class EventCallback implements IotHubEventCallback
-    {
+    protected static class EventCallback implements IotHubEventCallback {
         @Override
-        public void execute(IotHubStatusCode status, Object context)
-        {
+        public void execute(IotHubStatusCode status, Object context) {
             if (context instanceof Message) {
                 System.out.println("Send message with status: " + status.name());
             } else {
@@ -24,13 +20,11 @@ public class App
         }
     }
 
-    protected static class MessageCallbackMqtt implements MessageCallback
-    {
+    protected static class MessageCallbackMqtt implements MessageCallback {
         private int counter = 0;
 
         @Override
-        public IotHubMessageResult execute(Message msg, Object context)
-        {
+        public IotHubMessageResult execute(Message msg, Object context) {
             this.counter += 1;
 
             System.out.println(
@@ -65,12 +59,13 @@ public class App
                 case DISCONNECTED_RETRYING:
                     System.out.println(String.format(statusStr, "Retrying"));
                     break;
+                default:
+                    break;
             }
         }
     }
 
-    public static void main( String[] args )
-    {
+    public static void main(String[] args) {
         try {
             IotHubClientProtocol protocol = IotHubClientProtocol.MQTT;
             System.out.println("Start to create client with MQTT protocol");
