@@ -30,7 +30,7 @@ public class App {
             System.out.println(
                     String.format("Received message %d: %s",
                             this.counter, new String(msg.getBytes(), Message.DEFAULT_IOTHUB_MESSAGE_CHARSET)));
-            if (context instanceof  ModuleClient) {
+            if (context instanceof ModuleClient) {
                 ModuleClient client = (ModuleClient) context;
                 client.sendEventAsync(msg, eventCallback, msg, App.OUTPUT_NAME);
             }
