@@ -4,6 +4,16 @@
                       xsi:schemaLocation="http://maven.apache.org/plugins/maven-archetype-plugin/archetype-descriptor/1.0.0 http://maven.apache.org/xsd/archetype-descriptor-1.0.0.xsd"
                       name="azure-functions-archetype" partial="true">
     <requiredProperties>
+        <!-- group id and artifactId should match "[A-Za-z0-9_\\-.]+" according to the maven impl-->
+        <!-- please refer to https://github.com/apache/maven/blob/master/maven-model-builder/src/main/java/org/apache/maven/model/validation/DefaultModelValidator.java -->
+        <requiredProperty key="groupId">
+            <validationRegex>[A-Za-z0-9_\-\.]+</validationRegex>
+        </requiredProperty>
+
+        <requiredProperty key="artifactId">
+            <validationRegex>[A-Za-z0-9_\-\.]+</validationRegex>
+        </requiredProperty>
+        
         <!-- Default value is ${artifactId}-${timestamp} -->
         <requiredProperty key="appName">
             <defaultValue>${artifactId.toLowerCase()}-${package.getClass().forName("java.time.LocalDateTime").getMethod("now").invoke(null).format($package.Class.forName("java.time.format.DateTimeFormatter").getMethod("ofPattern", $package.Class).invoke(null, "yyyyMMddHHmmssSSS"))}</defaultValue>
