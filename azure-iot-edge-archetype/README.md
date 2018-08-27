@@ -19,7 +19,7 @@ Parameter Name | Default Value | Description
 Run below command to create projects for Azure IoT Edge module in interactive mode.
 
 ```cmd
-mvn archetype:generate -DarchetypeGroupId=com.microsoft.azure -DarchetypeArtifactId=azure-iot-edge-archetype
+mvn archetype:generate -DarchetypeGroupId=com.microsoft.azure -DarchetypeArtifactId=azure-iot-edge-archetype -DarchetypeVersion=1.0.0
 ```
 
 ### Batch Mode
