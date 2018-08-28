@@ -14,7 +14,7 @@ public class Function {
      * 2. curl {your host}/api/HttpTrigger-Java?name=HTTP%20Query
      */
     @FunctionName("HttpTrigger-Java")
-    public HttpResponseMessage HttpTriggerJava(
+    public HttpResponseMessage run(
             @HttpTrigger(name = "req", methods = {HttpMethod.GET, HttpMethod.POST}, authLevel = AuthorizationLevel.ANONYMOUS) HttpRequestMessage<Optional<String>> request,
             final ExecutionContext context) {
         context.getLogger().info("Java HTTP trigger processed a request.");

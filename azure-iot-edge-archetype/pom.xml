@@ -5,12 +5,12 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.microsoft.azure</groupId>
-    <artifactId>azure-functions-archetype</artifactId>
-    <version>1.15-SNAPSHOT</version>
+    <artifactId>azure-iot-edge-archetype</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>Maven Archetype for Azure Functions</name>
-    <description>Maven Archetype for Azure Functions</description>
+    <name>Maven Archetype for Azure IoT Edge</name>
+    <description>Maven Archetype for Azure IoT Edge Module Project</description>
     <url>https://github.com/microsoft/azure-maven-archetypes</url>
 
     <properties>
@@ -34,9 +34,9 @@
 
     <developers>
         <developer>
-            <id>xscript</id>
-            <name>Kevin Zhao</name>
-            <email>kevinzha@microsoft.com</email>
+            <id>adashen</id>
+            <name>Wei Shen</name>
+            <email>shenwe@microsoft.com</email>
         </developer>
     </developers>
 
