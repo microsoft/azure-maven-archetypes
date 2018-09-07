@@ -1,0 +1,25 @@
+FROM winamd64/openjdk:8-jdk-nanoserver as build_env
+ENV MAVEN_SUBDIR maven-3
+ENV MAVEN_VERSION 3.5.4
+ENV MAVEN_ZIP apache-maven-3.5.4-bin.zip
+ENV MAVEN_HOME C:\\apache-maven-3.5.4
+
+RUN $newPath = ('{0}\bin;{1}' -f $env:MAVEN_HOME, $env:PATH); \
+	Write-Host ('Updating PATH: {0}' -f $newPath); \
+	setx /M PATH $newPath;
+
+RUN $url = ('http://www-us.apache.org/dist/maven/{0}/{1}/binaries/{2}' -f $env:MAVEN_SUBDIR, $env:MAVEN_VERSION, $env:MAVEN_ZIP); \
+    Write-Host ('Downloading {0} ...' -f $url); \
+    Invoke-WebRequest -Uri 'http://www-us.apache.org/dist/maven/maven-3/3.5.4/binaries/apache-maven-3.5.4-bin.zip' -OutFile 'maven.zip'; \
+    Write-Host 'Expanding ...'; \
+    Expand-Archive maven.zip -DestinationPath C:\; \
+    mvn org.apache.maven.plugins:maven-dependency-plugin:3.1.1:get -Dartifact='com.microsoft.azure.sdk.iot:iot-device-client:1.13.3' -DrepoUrl=https://repo.maven.apache.org/maven2/;
+
+WORKDIR /app
+COPY . ./
+RUN mvn install '-Dmaven.test.skip=true'
+
+FROM winamd64/openjdk:8-jdk-nanoserver
+WORKDIR /app
+COPY --from=build_env /app/target/${artifactId}-${version}-with-deps.jar ./app.jar
+ENTRYPOINT ["java","-jar","./app.jar"]
