@@ -1,5 +1,5 @@
 FROM maven:3.5-jdk-8-alpine AS build-env
-RUN mvn org.apache.maven.plugins:maven-dependency-plugin:3.1.1:get -Dartifact=com.microsoft.azure.sdk.iot:iot-device-client:1.13.3 -DrepoUrl=https://repo.maven.apache.org/maven2/
+RUN mvn org.apache.maven.plugins:maven-dependency-plugin:3.1.1:get -Dartifact=com.microsoft.azure.sdk.iot:iot-device-client:1.14.0 -DrepoUrl=https://repo.maven.apache.org/maven2/
 
 WORKDIR /app
 COPY . /app
