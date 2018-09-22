@@ -93,7 +93,7 @@
                     <appSettings>
                         <property>
                             <name>FUNCTIONS_EXTENSION_VERSION</name>
-                            <value>beta</value>
+                            <value>~2</value>
                         </property>
                         <property>
                             <name>FUNCTIONS_WORKER_RUNTIME</name>
