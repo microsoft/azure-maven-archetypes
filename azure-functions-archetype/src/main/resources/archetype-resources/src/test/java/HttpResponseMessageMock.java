@@ -21,11 +21,11 @@ public class HttpResponseMessageMock implements HttpResponseMessage {
     }
     
     @Override
-    public HttpStatusType getHttpStatus() {
+    public HttpStatusType getStatus() {
         return this.httpStatus;
     }
     @Override    	  
-    public int getStatus() { 
+    public int getStatusCode() { 
         return httpStatusCode; 
     }
     @Override
@@ -47,8 +47,7 @@ public class HttpResponseMessageMock implements HttpResponseMessage {
             this.httpStatusCode = status.value();
             this.httpStatus = status;
             return this;
-        }
-        
+        }        
     
         @Override
         public Builder status(HttpStatusType httpStatusType) {
