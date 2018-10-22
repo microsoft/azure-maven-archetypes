@@ -8,9 +8,10 @@ import java.util.Map;
  * The mock for HttpResponseMessage, can be used in unit tests to verify if the returned response by HTTP trigger function is correct or not.
  */
 public class HttpResponseMessageMock implements HttpResponseMessage {
-    private HttpStatus status;
-    private Map<String, String> headers;
+    private int httpStatusCode;
+    private HttpStatusType httpStatus;
     private Object body;
+    private Map<String, String> headers;
 
     public HttpResponseMessageMock(HttpStatus status, Map<String, String> headers, Object body) {
         this.status = status;
@@ -19,8 +20,12 @@ public class HttpResponseMessageMock implements HttpResponseMessage {
     }
     
     @Override
-    public HttpStatus getStatus() {
-        return this.status;
+    public HttpStatusType getStatus() {
+        return this.httpStatus;
+    }
+    @Override    	  
+    public int getStatus() { 
+        return httpStatusCode; 
     }
     @Override
     public String getHeader(String key) {
@@ -36,9 +41,17 @@ public class HttpResponseMessageMock implements HttpResponseMessage {
         private Map<String, String> headers;
         private Object body;
 
+        public Builder status(HttpStatus status) {
+            this.httpStatusCode = status.value();
+            this.httpStatus = status;
+            return this;
+        }
+        
+    
         @Override
-        public HttpResponseMessage.Builder status(HttpStatus status) {
-            this.status = status;
+        public Builder status(HttpStatusType httpStatusType) {
+            this.httpStatusCode = httpStatusType.value();
+            this.httpStatus = httpStatusType;
             return this;
         }
         @Override
@@ -53,7 +66,7 @@ public class HttpResponseMessageMock implements HttpResponseMessage {
         }
         @Override
         public HttpResponseMessage build() {
-            return new HttpResponseMessageMock(this.status, this.headers, this.body);
+            return new HttpResponseMessageMock(this.httpStatus, this.headers, this.body);
         }
     }
 }
