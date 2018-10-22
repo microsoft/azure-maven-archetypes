@@ -1,4 +1,4 @@
-package $package;
+package com.microsoft;
 
 import com.microsoft.azure.functions.*;
 
@@ -13,14 +13,15 @@ public class HttpResponseMessageMock implements HttpResponseMessage {
     private Object body;
     private Map<String, String> headers;
 
-    public HttpResponseMessageMock(HttpStatus status, Map<String, String> headers, Object body) {
-        this.status = status;
-        this.headers = headers;
+    public HttpResponseMessageMock(HttpStatusType status, Map<String, String> headers, Object body) {
+        this.httpStatus = status;
+        this.httpStatusCode = status.value();
+        this.headers = headers;        
         this.body = body;
     }
     
     @Override
-    public HttpStatusType getStatus() {
+    public HttpStatusType getHttpStatus() {
         return this.httpStatus;
     }
     @Override    	  
@@ -37,9 +38,10 @@ public class HttpResponseMessageMock implements HttpResponseMessage {
     }
 
     public static class HttpResponseMessageBuilderMock implements HttpResponseMessage.Builder {
-        private HttpStatus status;
-        private Map<String, String> headers;
         private Object body;
+		private int httpStatusCode;
+		private Map<String, String> headers;
+		private HttpStatusType httpStatus;
 
         public Builder status(HttpStatus status) {
             this.httpStatusCode = status.value();
