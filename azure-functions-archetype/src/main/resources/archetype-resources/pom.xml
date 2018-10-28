@@ -105,6 +105,11 @@
                     <appName>${functionAppName}</appName>
                     <region>${functionAppRegion}</region>
                     <appSettings>
+                        <!-- Run Azure Function from package file by default -->
+                        <property>
+                            <name>WEBSITE_RUN_FROM_PACKAGE</name>
+                            <value>1</value>
+                        </property>
                         <property>
                             <name>FUNCTIONS_EXTENSION_VERSION</name>
                             <value>~2</value>
