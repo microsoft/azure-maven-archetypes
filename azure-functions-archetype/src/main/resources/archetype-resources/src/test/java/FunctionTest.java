@@ -28,6 +28,7 @@ public class FunctionTest {
     @Test
     public void testHttpTriggerJava() throws Exception {
         // Setup
+        @SuppressWarnings("unchecked")
         final HttpRequestMessage<Optional<String>> req = mock(HttpRequestMessage.class);
 
         final Map<String, String> queryParams = new HashMap<>();
