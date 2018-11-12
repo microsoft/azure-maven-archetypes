@@ -12,7 +12,8 @@ install:
   - cmd: copy "C:\Program Files (x86)\Apache\Maven\bin\mvn.cmd" "C:\Program Files (x86)\Apache\Maven\bin\mvn.bat"
 
 build_script:
-  - ps: '& .\e2etest.ps1' 
+  - ps: |
+      $proc =  .\e2etest.ps1
 
 test_script:
   - ps: |

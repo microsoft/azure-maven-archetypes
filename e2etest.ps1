@@ -27,3 +27,4 @@ $Env:AZURE_FUNCTIONS_ENVIRONMENT = "development"
 $Env:AzureWebJobsScriptRoot = "$base\e2etestproject\e2etestproject\target\azure-functions\e2etest-java-functions"
 $proc = start-process -filepath "$base\Azure.Functions.Cli\func.exe" -WorkingDirectory "$Env:AzureWebJobsScriptRoot" -ArgumentList "host start" -PassThru
 Start-Sleep -s 30
+return $proc
