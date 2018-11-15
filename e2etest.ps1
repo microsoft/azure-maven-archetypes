@@ -1,17 +1,17 @@
 # Define the functions
-Function RemoveFileIfExist($fileName){
-    if(Test-Path $fileName){
+Function RemoveFileIfExist($fileName) {
+    if (Test-Path $fileName) {
         Remove-Item -Force $fileName
     }
 }
 
-Function RemoveFolderIfExist($folderName){
-    if(Test-Path $folderName){
+Function RemoveFolderIfExist($folderName) {
+    if (Test-Path $folderName) {
         Remove-Item -Recurse -Force $folderName
     }
 }
 
-Function DownloadFileFromUrl($url,$destination){
+Function DownloadFileFromUrl($url, $destination) {
     $wc = New-Object System.Net.WebClient
     $wc.DownloadFile($Env:FUNCTIONCLI_URL, $functionCLIZipPath)
 }
@@ -26,14 +26,14 @@ RemoveFileIfExist $functionCLIZipPath
 RemoveFolderIfExist $functionCLIPath
 DownloadFileFromUrl $Env:FUNCTIONCLI_URL $functionCLIZipPath
 Expand-Archive $functionCLIZipPath -DestinationPath $functionCLIPath
-$Env:Path = $Env:Path+";$functionCLIPath"
+$Env:Path = $Env:Path + ";$functionCLIPath"
 
 # Install maven plguin archetype
 mvn clean install
 
 # Generate function project through archetype
 $testProjectBaseFolder = ".\testprojects"
-# Get the version of archetype and set archetypeVersion or maven will use the repository version to create project
+# Get the version of archetype and set archetypeVersion in following steps
 $atchetypeVersion = ([xml](gc ".\azure-functions-archetype\pom.xml")).project.version 
 RemoveFolderIfExist $testProjectBaseFolder
 mkdir $testProjectBaseFolder
