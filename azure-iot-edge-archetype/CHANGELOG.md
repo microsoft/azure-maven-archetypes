@@ -1,3 +1,4 @@
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.microsoft.azure/azure-iot-edge-archetype/badge.svg?style=plastic)](https://maven-badges.herokuapp.com/maven-central/com.microsoft.azure/azure-iot-edge-archetype)
 # Change Log
 ## 1.2.0 (2018-12-06)
 ### Removed:
