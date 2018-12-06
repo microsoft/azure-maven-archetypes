@@ -1,5 +1,5 @@
 # Maven Archetypes for Azure IoT Edge
-[![Maven Central](https://img.shields.io/maven-central/v/com.microsoft.azure/azure-iot-edge-archetype.svg)](http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22com.microsoft.azure%22%20AND%20a%3A%22azure-iot-edge-archetype%22)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.microsoft.azure/azure-iot-edge-archetype/badge.svg?style=plastic)](https://maven-badges.herokuapp.com/maven-central/com.microsoft.azure/azure-iot-edge-archetype)
 
 This is the Maven Archetype for Azure IoT Edge.
 
