@@ -32,13 +32,13 @@
 
     <fileSets>
         <fileSet filtered="true" packaged="true" encoding="UTF-8">
-            <directory>src/main/java</directory>
+            <directory>src/main/kotlin</directory>
             <includes>
                 <include>**/*.kt</include>
             </includes>
         </fileSet>
         <fileSet filtered="true" packaged="true" encoding="UTF-8">
-            <directory>src/test/java</directory>
+            <directory>src/test/kotlin</directory>
             <includes>
                 <include>**/*.kt</include>
             </includes>
