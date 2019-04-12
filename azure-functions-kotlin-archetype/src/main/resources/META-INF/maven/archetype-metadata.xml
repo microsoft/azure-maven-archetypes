@@ -13,6 +13,14 @@
         <requiredProperty key="artifactId">
             <validationRegex>[A-Za-z0-9_\-\.]+</validationRegex>
         </requiredProperty>
+
+        <requiredProperty key="package">
+            <defaultValue>${groupId}</defaultValue>
+        </requiredProperty>
+
+        <requiredProperty key="version">
+            <defaultValue>1.0-SNAPSHOT</defaultValue>
+        </requiredProperty>
         
         <!-- Default value is ${artifactId}-${timestamp} -->
         <requiredProperty key="appName">
