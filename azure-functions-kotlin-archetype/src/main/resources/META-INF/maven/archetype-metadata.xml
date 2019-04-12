@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<archetype-descriptor xmlns="http://maven.apache.org/plugins/maven-archetype-plugin/archetype-descriptor/1.0.0"
+                      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                      xsi:schemaLocation="http://maven.apache.org/plugins/maven-archetype-plugin/archetype-descriptor/1.0.0 http://maven.apache.org/xsd/archetype-descriptor-1.0.0.xsd"
+                      name="azure-functions-archetype" partial="true">
+    <requiredProperties>
+        <!-- groupId and artifactId should match "[A-Za-z0-9_\\-.]+" according to the maven impl-->
+        <!-- please refer to https://github.com/apache/maven/blob/master/maven-model-builder/src/main/java/org/apache/maven/model/validation/DefaultModelValidator.java#L76 -->
+        <requiredProperty key="groupId">
+            <validationRegex>[A-Za-z0-9_\-\.]+</validationRegex>
+        </requiredProperty>
+
+        <requiredProperty key="artifactId">
+            <validationRegex>[A-Za-z0-9_\-\.]+</validationRegex>
+        </requiredProperty>
+        
+        <!-- Default value is ${artifactId}-${timestamp} -->
+        <requiredProperty key="appName">
+            <defaultValue>${artifactId.toLowerCase()}-${package.getClass().forName("java.time.LocalDateTime").getMethod("now").invoke(null).format($package.Class.forName("java.time.format.DateTimeFormatter").getMethod("ofPattern", $package.Class).invoke(null, "yyyyMMddHHmmssSSS"))}</defaultValue>
+        </requiredProperty>
+
+        <!-- This is a work around of issue at https://issues.apache.org/jira/browse/ARCHETYPE-308 -->
+        <!-- By using below expression, Maven Archetype will ask for user input with default value "westus" -->
+        <requiredProperty key="appRegion">
+            <defaultValue>${package.getClass().forName("java.lang.StringBuilder").getConstructor($package.getClass().forName("java.lang.String")).newInstance("westus").toString()}</defaultValue>
+        </requiredProperty>
+
+        <requiredProperty key="resourceGroup">
+            <defaultValue>${package.getClass().forName("java.lang.StringBuilder").getConstructor($package.getClass().forName("java.lang.String")).newInstance("java-functions-group").toString()}</defaultValue>
+        </requiredProperty>
+    </requiredProperties>
+
+    <fileSets>
+        <fileSet filtered="true" packaged="true" encoding="UTF-8">
+            <directory>src/main/java</directory>
+            <includes>
+                <include>**/*.kt</include>
+            </includes>
+        </fileSet>
+        <fileSet filtered="true" packaged="true" encoding="UTF-8">
+            <directory>src/test/java</directory>
+            <includes>
+                <include>**/*.kt</include>
+            </includes>
+        </fileSet>
+        <fileSet filtered="false" packaged="false" encoding="UTF-8">
+            <directory></directory>
+            <includes>
+                <include>*.json</include>
+                <include>.gitignore</include>
+            </includes>
+        </fileSet>
+    </fileSets>
+</archetype-descriptor>

@@ -47,6 +47,7 @@
 
     <modules>
         <module>azure-functions-archetype</module>
+        <module>azure-functions-kotlin-archetype</module>
     </modules>
 
     <build>
