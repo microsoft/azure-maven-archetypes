@@ -6,7 +6,7 @@ This is the Maven Archetype for Azure Functions.
 ## Required Parameters
 
 Like any other Maven Archetype, you are required to provide values for parameters `groupId`, `artifactId`, `version` and `package`.
-On top of that, two extra parameters are required for Azure Functions Archetype as listed in below table. They both have default values.
+On top of that, three extra parameters are required for Azure Functions Archetype as listed in below table. They all have default values.
 You can use their default values or enter your own.
 
 Parameter Name | Default Value | Description
