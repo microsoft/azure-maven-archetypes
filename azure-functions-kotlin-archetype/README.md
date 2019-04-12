@@ -1,7 +1,7 @@
 # Maven Archetypes for Azure Functions
-[![Maven Central](https://img.shields.io/maven-central/v/com.microsoft.azure/azure-functions-archetype.svg)](http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22com.microsoft.azure%22%20AND%20a%3A%22azure-functions-archetype%22)
+[![Maven Central](https://img.shields.io/maven-central/v/com.microsoft.azure/azure-functions-kotlin-archetype.svg)](http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22com.microsoft.azure%22%20AND%20a%3A%22azure-functions-kotlin-archetype%22)
 
-This is the Maven Archetype for Azure Functions.
+This is a Maven Archetype for Azure Functions written in Kotlin.
 
 ## Required Parameters
 
@@ -21,7 +21,7 @@ Parameter Name | Default Value | Description
 Run below command to create projects for Azure Java Functions in interactive mode.
 
 ```cmd
-mvn archetype:generate -DarchetypeGroupId=com.microsoft.azure -DarchetypeArtifactId=azure-functions-archetype
+mvn archetype:generate -DarchetypeGroupId=com.microsoft.azure -DarchetypeArtifactId=azure-functions-kotlin-archetype
 ```
 
 ### Batch Mode
