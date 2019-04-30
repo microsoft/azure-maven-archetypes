@@ -5,6 +5,7 @@ This repo contains Maven Archetypes for Azure. The following table lists all exi
 Archetype Artifact Id | Archetype Group Id | Maven Central Version
 ---|---|---
 `azure-functions-archetype`|`com.microsoft.azure`| [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.microsoft.azure/azure-functions-archetype/badge.svg?style=plastic)](https://maven-badges.herokuapp.com/maven-central/com.microsoft.azure/azure-functions-archetype)
+`azure-functions-kotlin-archetype`|`com.microsoft.azure`| [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.microsoft.azure/azure-functions-kotlin-archetype/badge.svg?style=plastic)](https://maven-badges.herokuapp.com/maven-central/com.microsoft.azure/azure-functions-kotlin-archetype)
 `azure-iot-edge-archetype`|`com.microsoft.azure`| [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.microsoft.azure/azure-iot-edge-archetype/badge.svg?style=plastic)](https://maven-badges.herokuapp.com/maven-central/com.microsoft.azure/azure-iot-edge-archetype)
 
 ### Reporting Issues and Feedback
