@@ -16,7 +16,7 @@ class Function {
      * Function Key is not needed when running locally, it is used to invoke function deployed to Azure.
      * More details: https://aka.ms/functions_authorization_keys
      */
-    @FunctionName("HttpTrigger-Java")
+    @FunctionName("HttpTrigger-Kotlin")
     fun run(
             @HttpTrigger(
                     name = "req",
