@@ -133,10 +133,6 @@
                             <name>FUNCTIONS_EXTENSION_VERSION</name>
                             <value>~2</value>
                         </property>
-                        <property>
-                            <name>FUNCTIONS_WORKER_RUNTIME</name>
-                            <value>java</value>
-                        </property>
                     </appSettings>
                 </configuration>
                 <executions>
