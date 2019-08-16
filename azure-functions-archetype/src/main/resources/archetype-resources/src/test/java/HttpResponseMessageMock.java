@@ -3,6 +3,7 @@ package $package;
 import com.microsoft.azure.functions.*;
 
 import java.util.Map;
+import java.util.HashMap;
 
 /**
  * The mock for HttpResponseMessage, can be used in unit tests to verify if the
@@ -44,7 +45,7 @@ public class HttpResponseMessageMock implements HttpResponseMessage {
     public static class HttpResponseMessageBuilderMock implements HttpResponseMessage.Builder {
         private Object body;
         private int httpStatusCode;
-        private Map<String, String> headers;
+        private Map<String, String> headers = new HashMap<>();
         private HttpStatusType httpStatus;
 
         public Builder status(HttpStatus status) {
