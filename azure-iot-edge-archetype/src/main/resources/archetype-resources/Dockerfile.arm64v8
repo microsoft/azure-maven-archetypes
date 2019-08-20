@@ -1,15 +1,15 @@
-FROM maven:3.5-jdk-8-alpine AS build-env
+FROM arm64v8/maven:3.5-jdk-8-slim AS build-env
 RUN mvn org.apache.maven.plugins:maven-dependency-plugin:3.1.1:get -Dartifact=com.microsoft.azure.sdk.iot:iot-device-client:1.17.5 -DrepoUrl=https://repo.maven.apache.org/maven2/
 
 WORKDIR /app
 COPY . /app
 RUN mvn install -Dmaven.test.skip=true
 
-FROM openjdk:8-jdk-alpine
+FROM arm64v8/openjdk:8-jdk-slim
 WORKDIR /app
 COPY --from=build-env /app/target/${artifactId}-${version}-with-deps.jar ./app.jar
 
-RUN addgroup -g 1000 -S moduleuser && \
-    adduser -u 1000 -S moduleuser -G moduleuser
+RUN groupadd --gid 1000 moduleuser && \
+    useradd --uid 1000 --gid moduleuser --shell /bin/bash --create-home moduleuser
 USER moduleuser
 ENTRYPOINT ["java","-jar","./app.jar"]
