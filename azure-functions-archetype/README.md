@@ -19,7 +19,13 @@ Parameter Name | Default Value | Description
 ## Usage
 
 ### Interactive Mode
-Run below command to create projects for Azure Java Functions with docker file in interactive mode.
+Run below command to create projects for Azure Java Functions in interactive mode.
+
+```cmd
+mvn archetype:generate -DarchetypeGroupId=com.microsoft.azure -DarchetypeArtifactId=azure-functions-archetype
+```
+
+To create a function project with docker support, please add -Ddocker to above command
 
 ```cmd
 mvn archetype:generate -DarchetypeGroupId=com.microsoft.azure -DarchetypeArtifactId=azure-functions-archetype -Ddocker
