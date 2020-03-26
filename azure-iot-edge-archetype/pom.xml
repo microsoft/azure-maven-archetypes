@@ -6,7 +6,7 @@
 
     <groupId>com.microsoft.azure</groupId>
     <artifactId>azure-iot-edge-archetype</artifactId>
-    <version>1.3.0-arm64-preview</version>
+    <version>1.3.0</version>
     <packaging>jar</packaging>
 
     <name>Maven Archetype for Azure IoT Edge</name>
