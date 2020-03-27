@@ -3,17 +3,18 @@
 
 This is the Maven Archetype for Azure Functions.
 
-## Required Parameters
+## Azure Parameters
 
 Like any other Maven Archetype, you are required to provide values for parameters `groupId`, `artifactId`, `version` and `package`.
-On top of that, three extra parameters are required for Azure Functions Archetype as listed in below table. They all have default values.
-You can use their default values or enter your own.
+Besides, Archetypes for Azure Functions provides another parameter `docker`, it will generate docker file with function project when set to `true`.
+
+On top of that, three extra parameters are required for Azure Functions deployment. Default value and description for those parameters are listed in below table, you can use their default values or change to your own value in `pom.xml`.
 
 Parameter Name | Default Value | Description
 ---|---|---
-`appName` | ${artifactId}-${timestamp} | Specifies the name of your Azure Functions, which will be used to package, run and deploy your project.
-`appRegion` | westus | Specifies the region of your Azure Functions, which will be used when creating the new Azure Functions.
-`resourceGroup` | java-functions-group | Specifies the resource group of your Azure Functions, which will be used when creating the new Azure Functions..
+`appName` | `${artifactId}-${timestamp}` | Specifies the name of your Azure Functions, which will be used to package, run and deploy your project.
+`appRegion` | `westus` | Specifies the region of your Azure Functions, which will be used when creating the new Azure Functions.
+`resourceGroup` | `java-functions-group` | Specifies the resource group of your Azure Functions, which will be used when creating the new Azure Functions.
 
 ## Usage
 
@@ -22,6 +23,12 @@ Run below command to create projects for Azure Java Functions in interactive mod
 
 ```cmd
 mvn archetype:generate -DarchetypeGroupId=com.microsoft.azure -DarchetypeArtifactId=azure-functions-archetype
+```
+
+To create a function project with docker support, please add -Ddocker to above command
+
+```cmd
+mvn archetype:generate -DarchetypeGroupId=com.microsoft.azure -DarchetypeArtifactId=azure-functions-archetype -Ddocker
 ```
 
 ### Batch Mode

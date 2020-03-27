@@ -128,14 +128,13 @@
                     <region>westus</region>
                     <!-- function pricingTier, default to be consumption if not specified -->
                     <!-- refers https://github.com/microsoft/azure-maven-plugins/tree/develop/azure-functions-maven-plugin#supported-pricing-tiers for all valid values -->
-                    <!-- <pricingTier></pricingTier> -->
+                    <pricingTier>EP1</pricingTier>
                     <runtime>
                         <!-- runtime os, could be windows, linux or docker-->
-                        <os>windows</os>
-                        <!-- for docker function, please set the following parameters -->
-                        <!-- <image>[hub-user/]repo-name[:tag]</image> -->
-                        <!-- <serverId></serverId> -->
-                        <!-- <registryUrl></registryUrl>  -->
+                        <os>docker</os>
+                        <image>[hub-user/]repo-name[:tag]</image>
+                        <serverId></serverId>
+                        <registryUrl></registryUrl> 
                     </runtime>
                     <appSettings>
                         <property>
