@@ -29,6 +29,11 @@
             <validationRegex>[A-Za-z0-9_\-\.]+</validationRegex>
             <defaultValue>${package.getClass().forName("java.lang.StringBuilder").getConstructor($package.getClass().forName("java.lang.String")).newInstance("2.11.12").toString()}</defaultValue>
         </requiredProperty>
+
+        <requiredProperty key="needSampleCode">
+            <validationRegex>(true)|(false)</validationRegex>
+            <defaultValue>${package.getClass().forName("java.lang.StringBuilder").getConstructor($package.getClass().forName("java.lang.String")).newInstance("true").toString()}</defaultValue>
+        </requiredProperty>
     </requiredProperties>
 
     <fileSets>
