@@ -54,7 +54,8 @@ object SparkSQLExample {
 
   private def runBasicDataFrameExample(spark: SparkSession): Unit = {
     // $example on:create_df$
-    val df = spark.read.json("wasb:///example/data/people.json")
+    val peopleJsonRdd = spark.sparkContext.parallelize(DataSources.peopleJson)
+    val df = spark.read.json(peopleJsonRdd)
 
     // Displays the content of the DataFrame to stdout
     df.show()
@@ -173,8 +174,9 @@ object SparkSQLExample {
     primitiveDS.map(_ + 1).collect() // Returns: Array(2, 3, 4)
 
     // DataFrames can be converted to a Dataset by providing a class. Mapping will be done by name
-    val path = "wasb:///example/data/people.json"
-    val peopleDS = spark.read.json(path).as[Person]
+    val peopleJsonRdd = spark.sparkContext.parallelize(DataSources.peopleJson)
+    val peopleDS = spark.read.json(peopleJsonRdd).as[Person]
+
     peopleDS.show()
     // +---+-----+
     // |age| name|

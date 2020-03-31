@@ -18,8 +18,12 @@
 // scalastyle:off println
 package ${package}
 
-import org.apache.spark.SparkConf
+import org.apache.spark.rdd.RDD
+import org.apache.spark.streaming.dstream.InputDStream
 import org.apache.spark.streaming.{Seconds, StreamingContext}
+import org.apache.spark.{SparkConf, SparkContext}
+
+import scala.collection.mutable
 
 /**
  * Counts words in new text files created in the given directory
@@ -29,16 +33,20 @@ object SparkStreaming_HdfsWordCount {
 
     val sparkConf = new SparkConf().setAppName("HdfsWordCount")
     // Create the context
-    val ssc = new StreamingContext(sparkConf, Seconds(2))
+    val sc = new SparkContext(sparkConf)
+    val ssc = new StreamingContext(sc, Seconds(2))
 
-    // Create the FileInputDStream on the directory and use the
-    // stream to count words in new files created
-    val lines = ssc.textFileStream("wasb:///HdiSamples/HdiSamples/FoodInspectionData/README")
-    val words = lines.flatMap(_.split(" "))
+   // create an input stream from a queue of RDDs.
+   // Pushing more RDDs in the queue to simulate process more events in the batch interval.
+    val inputData: mutable.Queue[RDD[String]] = mutable.Queue()
+    DataSources.copyright.foreach(line => inputData += sc.parallelize(List(line)))
+
+    val inputStream: InputDStream[String] = ssc.queueStream(inputData)
+
+    val words = inputStream.flatMap(_.split(" "))
     val wordCounts = words.map(x => (x, 1)).reduceByKey(_ + _)
     wordCounts.print()
     ssc.start()
     ssc.awaitTermination()
   }
 }
-
