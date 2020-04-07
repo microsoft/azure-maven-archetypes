@@ -1,7 +1,7 @@
-# Maven Archetypes for Azure Arcadia Spark
+# Maven Archetypes for Azure Spark
 [![Maven Central](!!!)](!!!)
 
-This is the Maven Archetype for Azure Arcadia Spark.
+This is the Maven Archetype for Azure Spark.
 
 ## Required Parameters
 
@@ -21,7 +21,7 @@ Parameter Name | Default Value | Description
 Run the command below to create an Apache Spark project in interactive mode.
 
 ```cmd
-mvn archetype:generate -DarchetypeGroupId=com.microsoft.azure -DarchetypeArtifactId=azure-arcadia-spark-archetype -DarchetypeVersion=1.0-SNAPSHOT
+mvn archetype:generate -DarchetypeGroupId=com.microsoft.azure -DarchetypeArtifactId=azure-spark-archetype -DarchetypeVersion=1.0-SNAPSHOT
 ```
 
 ### Batch Mode

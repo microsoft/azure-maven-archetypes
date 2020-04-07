@@ -4,12 +4,12 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.microsoft.azure</groupId>
-  <artifactId>azure-arcadia-spark-archetype</artifactId>
+  <artifactId>azure-spark-archetype</artifactId>
   <version>1.0-SNAPSHOT</version>
   <packaging>jar</packaging>
 
-  <name>Maven Archetype for Azure Arcadia Spark</name>
-  <description>Maven Archetype for Azure Arcadia Spark</description>
+  <name>Maven Archetype for Azure Spark</name>
+  <description>Maven Archetype for Azure Spark</description>
   <url>https://github.com/microsoft/azure-maven-archetypes</url>
 
   <properties>
