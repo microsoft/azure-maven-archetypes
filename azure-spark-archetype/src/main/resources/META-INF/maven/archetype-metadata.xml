@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<archetype-descriptor xmlns="http://maven.apache.org/plugins/maven-archetype-plugin/archetype-descriptor/1.0.0"
+                      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                      xsi:schemaLocation="http://maven.apache.org/plugins/maven-archetype-plugin/archetype-descriptor/1.0.0 http://maven.apache.org/xsd/archetype-descriptor-1.0.0.xsd"
+                      name="azure-spark-archetype" partial="true">
+    <requiredProperties>
+        <!-- groupId and artifactId should match "[A-Za-z0-9_\\-.]+" according to the maven impl-->
+        <!-- please refer to https://github.com/apache/maven/blob/master/maven-model-builder/src/main/java/org/apache/maven/model/validation/DefaultModelValidator.java#L76 -->
+        <requiredProperty key="groupId">
+            <validationRegex>[A-Za-z0-9_\-\.]+</validationRegex>
+        </requiredProperty>
+
+        <requiredProperty key="artifactId">
+            <validationRegex>[A-Za-z0-9_\-\.]+</validationRegex>
+        </requiredProperty>
+
+        <requiredProperty key="package">
+            <defaultValue>${groupId}</defaultValue>
+        </requiredProperty>
+
+        <!-- This is a work around of issue at https://issues.apache.org/jira/browse/ARCHETYPE-308 -->
+        <!-- By using below expression, Maven Archetype will ask user for input with default value -->
+        <requiredProperty key="sparkVersion">
+            <validationRegex>[A-Za-z0-9_\-\.]+</validationRegex>
+            <defaultValue>${package.getClass().forName("java.lang.StringBuilder").getConstructor($package.getClass().forName("java.lang.String")).newInstance("2.4.0").toString()}</defaultValue>
+        </requiredProperty>
+
+        <requiredProperty key="scalaVersion">
+            <validationRegex>[A-Za-z0-9_\-\.]+</validationRegex>
+            <defaultValue>${package.getClass().forName("java.lang.StringBuilder").getConstructor($package.getClass().forName("java.lang.String")).newInstance("2.11.12").toString()}</defaultValue>
+        </requiredProperty>
+
+        <requiredProperty key="needSampleCode">
+            <validationRegex>(true)|(false)</validationRegex>
+            <defaultValue>${package.getClass().forName("java.lang.StringBuilder").getConstructor($package.getClass().forName("java.lang.String")).newInstance("true").toString()}</defaultValue>
+        </requiredProperty>
+    </requiredProperties>
+
+    <fileSets>
+        <fileSet filtered="true" packaged="true" encoding="UTF-8">
+            <directory>src/main/java</directory>
+            <includes>
+                <include>**/*.java</include>
+            </includes>
+        </fileSet>
+        <fileSet filtered="true" packaged="true" encoding="UTF-8">
+            <directory>src/main/scala</directory>
+            <includes>
+                <include>**/*.scala</include>
+            </includes>
+        </fileSet>
+        <fileSet filtered="false" packaged="false" encoding="UTF-8">
+            <directory>src/main/resources</directory>
+            <includes>
+                <include>**/*</include>
+            </includes>
+        </fileSet>
+        <fileSet filtered="false" packaged="false" encoding="UTF-8">
+            <directory>data</directory>
+            <includes>
+                <include>**/**</include>
+            </includes>
+        </fileSet>
+    </fileSets>
+</archetype-descriptor>
