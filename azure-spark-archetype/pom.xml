@@ -5,7 +5,7 @@
 
   <groupId>com.microsoft.azure</groupId>
   <artifactId>azure-spark-archetype</artifactId>
-  <version>1.0-SNAPSHOT</version>
+  <version>0.1.0</version>
   <packaging>jar</packaging>
 
   <name>Maven Archetype for Azure Spark</name>
