@@ -21,7 +21,7 @@ Parameter Name | Default Value | Description
 Run the command below to create an Apache Spark project in interactive mode.
 
 ```cmd
-mvn archetype:generate -DarchetypeGroupId=com.microsoft.azure -DarchetypeArtifactId=azure-spark-archetype -DarchetypeVersion=1.0-SNAPSHOT
+mvn archetype:generate -DarchetypeGroupId=com.microsoft.azure -DarchetypeArtifactId=azure-spark-archetype -DarchetypeVersion=0.1.0
 ```
 
 ### Batch Mode
