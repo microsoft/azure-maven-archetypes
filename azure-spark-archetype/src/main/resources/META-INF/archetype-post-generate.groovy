@@ -6,8 +6,9 @@ def rootPath = "${request.getOutputDirectory()}/${request.getArtifactId()}"
 new File("$rootPath/data/__default__/user/current").mkdirs()
 
 if (!Boolean.valueOf(needSampleCode)) {
-    def scalaCodesDir = new File("$rootPath/src/main/scala/${request.getPackage()}")
-    def javaCodesDir = new File("$rootPath/src/main/java/${request.getPackage()}")
+    def packageRelativePath = request.getPackage().replace('.', '/')
+    def scalaCodesDir = new File("$rootPath/src/main/scala/${packageRelativePath}")
+    def javaCodesDir = new File("$rootPath/src/main/java/${packageRelativePath}")
     cleanupFolder(scalaCodesDir)
     cleanupFolder(javaCodesDir)
 }
