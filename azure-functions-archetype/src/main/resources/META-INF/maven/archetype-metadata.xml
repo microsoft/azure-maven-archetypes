@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<archetype-descriptor xmlns="http://maven.apache.org/plugins/maven-archetype-plugin/archetype-descriptor/1.0.0"
-                      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-                      xsi:schemaLocation="http://maven.apache.org/plugins/maven-archetype-plugin/archetype-descriptor/1.0.0 http://maven.apache.org/xsd/archetype-descriptor-1.0.0.xsd"
-                      name="azure-functions-archetype" partial="true">
+<archetype-descriptor xmlns="http://maven.apache.org/plugins/maven-archetype-plugin/archetype-descriptor/1.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/plugins/maven-archetype-plugin/archetype-descriptor/1.0.0 http://maven.apache.org/xsd/archetype-descriptor-1.0.0.xsd" name="azure-functions-archetype" partial="true">
     <requiredProperties>
         <!-- groupId and artifactId should match "[A-Za-z0-9_\\-.]+" according to the maven impl-->
         <!-- please refer to https://github.com/apache/maven/blob/master/maven-model-builder/src/main/java/org/apache/maven/model/validation/DefaultModelValidator.java#L76 -->
@@ -18,6 +15,22 @@
             <defaultValue>false</defaultValue>
         </requiredProperty>
 
+        <!-- Azure related parameters, provide default values but not prompt users -->
+        <requiredProperty key="appName">
+            <defaultValue>$(artifactId)-$(timestamp)</defaultValue>
+        </requiredProperty>
+
+        <requiredProperty key="appRegion">
+            <defaultValue>westus</defaultValue>
+        </requiredProperty>
+
+        <requiredProperty key="resourceGroup">
+            <defaultValue>java-functions-group</defaultValue>
+        </requiredProperty>
+
+        <requiredProperty key="appServicePlanName">
+            <defaultValue>java-functions-app-service-plan</defaultValue>
+        </requiredProperty>
     </requiredProperties>
 
     <fileSets>
