@@ -8,12 +8,13 @@ This is the Maven Archetype for Azure Functions.
 Like any other Maven Archetype, you are required to provide values for parameters `groupId`, `artifactId`, `version` and `package`.
 Besides, Archetypes for Azure Functions provides another parameter `docker`, it will generate docker file with function project when set to `true`.
 
-On top of that, three extra parameters are required for Azure Functions deployment. Default value and description for those parameters are listed in below table, you can use their default values or change to your own value in `pom.xml`.
+On top of that, four extra Azure parameters are required for Azure Functions deployment. Default value and description for those parameters are listed in below table, you can use their default values or change to your own value with command line options.
 
 Parameter Name | Default Value | Description
 ---|---|---
 `appName` | `${artifactId}-${timestamp}` | Specifies the name of your Azure Functions, which will be used to package, run and deploy your project.
 `appRegion` | `westus` | Specifies the region of your Azure Functions, which will be used when creating the new Azure Functions.
+`appServicePlanName` | `java-functions-app-service-plan` | Specifies the app service plan of your Azure Functions, which will be used when creating the new Azure Functions.
 `resourceGroup` | `java-functions-group` | Specifies the resource group of your Azure Functions, which will be used when creating the new Azure Functions.
 
 ## Usage
