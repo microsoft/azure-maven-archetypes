@@ -7,7 +7,7 @@ Archetype Artifact Id | Archetype Group Id | Maven Central Version
 `azure-functions-archetype`|`com.microsoft.azure`| [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.microsoft.azure/azure-functions-archetype/badge.svg?style=plastic)](https://maven-badges.herokuapp.com/maven-central/com.microsoft.azure/azure-functions-archetype)
 `azure-functions-kotlin-archetype`|`com.microsoft.azure`| [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.microsoft.azure/azure-functions-kotlin-archetype/badge.svg?style=plastic)](https://maven-badges.herokuapp.com/maven-central/com.microsoft.azure/azure-functions-kotlin-archetype)
 `azure-iot-edge-archetype`|`com.microsoft.azure`| [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.microsoft.azure/azure-iot-edge-archetype/badge.svg?style=plastic)](https://maven-badges.herokuapp.com/maven-central/com.microsoft.azure/azure-iot-edge-archetype)
-`azure-spark-archetype`|`com.microsoft.azure`| [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.microsoft.azure/azure-spark-archetype/badge.svg?style=plastic)](https://maven-badges.herokuapp.com/maven-central/com.microsoft.azure/azure-spark-archetype)
+`apache-spark-archetype`|`com.microsoft.azure`| [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.microsoft.azure/apache-spark-archetype/badge.svg?style=plastic)](https://maven-badges.herokuapp.com/maven-central/com.microsoft.azure/apache-spark-archetype)
 
 ### Reporting Issues and Feedback
 If you encounter any bugs with the Maven Archetypes, please file an issue in the [Issues](https://github.com/microsoft/azure-maven-archetypes/issues) section of our GitHub repo.
