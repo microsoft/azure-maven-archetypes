@@ -2,7 +2,7 @@
 <archetype-descriptor xmlns="http://maven.apache.org/plugins/maven-archetype-plugin/archetype-descriptor/1.0.0"
                       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                       xsi:schemaLocation="http://maven.apache.org/plugins/maven-archetype-plugin/archetype-descriptor/1.0.0 http://maven.apache.org/xsd/archetype-descriptor-1.0.0.xsd"
-                      name="azure-spark-archetype" partial="true">
+                      name="apache-spark-archetype" partial="true">
     <requiredProperties>
         <!-- groupId and artifactId should match "[A-Za-z0-9_\\-.]+" according to the maven impl-->
         <!-- please refer to https://github.com/apache/maven/blob/master/maven-model-builder/src/main/java/org/apache/maven/model/validation/DefaultModelValidator.java#L76 -->

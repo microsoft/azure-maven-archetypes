@@ -1,7 +1,7 @@
-# Maven Archetypes for Azure Spark
-[![Maven Central](!!!)](!!!)
+# Maven Archetypes for Apache Spark
+[![Maven Central](https://img.shields.io/maven-central/v/com.microsoft.azure/apache-spark-archetype.svg)](https://maven-badges.herokuapp.com/maven-central/com.microsoft.azure/apache-spark-archetype)
 
-This is the Maven Archetype for Azure Spark.
+This is the Maven Archetype for Apache Spark.
 
 ## Required Parameters
 
@@ -21,7 +21,7 @@ Parameter Name | Default Value | Description
 Run the command below to create an Apache Spark project in interactive mode.
 
 ```cmd
-mvn archetype:generate -DarchetypeGroupId=com.microsoft.azure -DarchetypeArtifactId=azure-spark-archetype -DarchetypeVersion=0.1.0
+mvn archetype:generate -DarchetypeGroupId=com.microsoft.azure -DarchetypeArtifactId=apache-spark-archetype -DarchetypeVersion=0.1.0
 ```
 
 ### Batch Mode
