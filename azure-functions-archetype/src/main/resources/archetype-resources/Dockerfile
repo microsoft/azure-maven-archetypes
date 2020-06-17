@@ -1,4 +1,7 @@
-FROM mcr.microsoft.com/azure-functions/java:3.0-java8-build AS installer-env
+ARG JAVA_VERSION=8
+# This image additionally contains function core tools – useful when using custom extensions
+#FROM mcr.microsoft.com/azure-functions/java:3.0-java$JAVA_VERSION-core-tools AS installer-env
+FROM mcr.microsoft.com/azure-functions/java:3.0-java$JAVA_VERSION-build AS installer-env
 
 COPY . /src/java-function-app
 RUN cd /src/java-function-app && \
@@ -7,16 +10,11 @@ RUN cd /src/java-function-app && \
     cd ./target/azure-functions/ && \
     cd $(ls -d */|head -n 1) && \
     cp -a . /home/site/wwwroot
- 
-# This Zulu OpenJDK Dockerfile and corresponding Docker image are
-# to be used solely with Java applications or Java application components
-# that are being developed for deployment on Microsoft Azure or Azure Stack,
-# and are not intended to be used for any other purpose.
-# This image is ssh enabled
-FROM mcr.microsoft.com/azure-functions/java:3.0-java8-appservice
 
-# If you want to deploy outside of Azure, use this image
-#FROM mcr.microsoft.com/azure-functions/java:3.0-java8
+# This image is ssh enabled
+FROM mcr.microsoft.com/azure-functions/java:3.0-java$JAVA_VERSION-appservice
+# This image isn't ssh enabled
+#FROM mcr.microsoft.com/azure-functions/java:3.0-java$JAVA_VERSION
 
 ENV AzureWebJobsScriptRoot=/home/site/wwwroot \
     AzureFunctionsJobHost__Logging__Console__IsEnabled=true
