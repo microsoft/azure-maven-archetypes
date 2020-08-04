@@ -15,10 +15,6 @@
             <defaultValue>false</defaultValue>
         </requiredProperty>
 
-        <requiredProperty key="javaVersion">
-            <defaultValue>8</defaultValue>
-        </requiredProperty>
-
         <!-- Azure related parameters, provide default values but not prompt users -->
         <requiredProperty key="appName">
             <defaultValue>$(artifactId)-$(timestamp)</defaultValue>
@@ -34,6 +30,10 @@
 
         <requiredProperty key="appServicePlanName">
             <defaultValue>java-functions-app-service-plan</defaultValue>
+        </requiredProperty>
+
+        <requiredProperty key="javaVersion">
+            <defaultValue>8</defaultValue>
         </requiredProperty>
     </requiredProperties>
 
