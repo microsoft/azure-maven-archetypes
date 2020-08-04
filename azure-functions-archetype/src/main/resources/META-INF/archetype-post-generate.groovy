@@ -27,8 +27,8 @@ if (appName == null || appName.equals("\$(artifactId)-\$(timestamp)")) {
     def finalAppName = String.format("%s-%s", artifactId, LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMddHHmmssSSS")))
     def pom = Paths.get(request.getOutputDirectory(), artifactId, pomFile).toFile()
     // Replace the string directly as use XmlNodePrinter will break origin file style and comments
-    def pomText = pom.text.replaceFirst("<functionAppName>.*</functionAppName>", String.format("<functionAppName>%s</functionAppName>", finalAppName))
+    def pomText = pom.text.replace("<functionAppName>\$(artifactId)-\$(timestamp)</functionAppName>", String.format("<functionAppName>%s</functionAppName>", finalAppName))
     // Update java compile version
-    pomText = pomText.replaceFirst("<java.version>.*</java.version>", String.format("<java.version>%s</java.version>", javaVersion == 8 ? "1.8" : "11"))
+    pomText = pomText.replaceFirst("<java.version>.*</java.version>", String.format("<java.version>%s</java.version>", "8".equals(javaVersion) ? "1.8" : "11"))
     pom.text = pomText;
 }

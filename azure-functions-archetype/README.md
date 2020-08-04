@@ -17,7 +17,7 @@ Parameter Name | Default Value | Description
 `appRegion` | `westus` | Specifies the region of your Azure Functions, which will be used when creating the new Azure Functions.
 `appServicePlanName` | `java-functions-app-service-plan` | Specifies the app service plan of your Azure Functions, which will be used when creating the new Azure Functions.
 `resourceGroup` | `java-functions-group` | Specifies the resource group of your Azure Functions, which will be used when creating the new Azure Functions.
-`javaVersion` | `8` | Specifies the function host java version as well as the project compile level.
+`javaVersion` | `8` | Specifies the function host java version as well as the project compile level, supported values are `8` or `11`
 
 ## Usage
 
