@@ -77,7 +77,7 @@
                     <runtime>
                         <!-- runtime os, could be windows, linux or docker-->
                         <os>windows</os>
-                        <javaVersion>8</javaVersion>
+                        <javaVersion>${javaVersion}</javaVersion>
                         <!-- for docker function, please set the following parameters -->
                         <!-- <image>[hub-user/]repo-name[:tag]</image> -->
                         <!-- <serverId></serverId> -->
