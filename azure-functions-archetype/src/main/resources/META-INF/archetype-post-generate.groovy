@@ -6,6 +6,7 @@ import java.nio.file.Paths;
 
 def isDocker = request.getProperties().get("docker")
 def artifactId = request.getProperties().get("artifactId")
+def javaVersion = request.getProperties().get("javaVersion")
 def dockerFile = "Dockerfile"
 def pomFile = "pom.xml"
 def dockerPomFile = "pom-docker.xml"
@@ -27,5 +28,7 @@ if (appName == null || appName.equals("\$(artifactId)-\$(timestamp)")) {
     def pom = Paths.get(request.getOutputDirectory(), artifactId, pomFile).toFile()
     // Replace the string directly as use XmlNodePrinter will break origin file style and comments
     def pomText = pom.text.replace("<functionAppName>\$(artifactId)-\$(timestamp)</functionAppName>", String.format("<functionAppName>%s</functionAppName>", finalAppName))
+    // Update java compile version
+    pomText = pomText.replaceFirst("<java.version>.*</java.version>", String.format("<java.version>%s</java.version>", "8".equals(javaVersion) ? "1.8" : "11"))
     pom.text = pomText;
 }

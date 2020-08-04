@@ -31,6 +31,10 @@
         <requiredProperty key="appServicePlanName">
             <defaultValue>java-functions-app-service-plan</defaultValue>
         </requiredProperty>
+
+        <requiredProperty key="javaVersion">
+            <defaultValue>8</defaultValue>
+        </requiredProperty>
     </requiredProperties>
 
     <fileSets>
