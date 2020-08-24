@@ -6,7 +6,6 @@ import java.nio.file.Paths;
 
 def isDocker = request.getProperties().get("docker")
 def artifactId = request.getProperties().get("artifactId")
-def javaVersion = request.getProperties().get("javaVersion")
 def dockerFile = "Dockerfile"
 def pomFile = "pom.xml"
 def dockerPomFile = "pom-docker.xml"
@@ -20,15 +19,19 @@ if (Boolean.valueOf(isDocker)) {
     Files.deleteIfExists(new File(rootDir, dockerPomFile).toPath())
 }
 
-def appName = request.getProperties().get("appName");
+def appName = request.getProperties().get("appName")
+def javaVersion = request.getProperties().get("javaVersion")
+def pom = Paths.get(request.getOutputDirectory(), artifactId, pomFile).toFile()
+def pomText = pom.text
+// Update java compile version & java runtime version
+// Supported values are 8/11, otherwise will use java 8 by default
+pomText = pomText.replaceFirst("<java.version>.*</java.version>", String.format("<java.version>%s</java.version>", "11".equals(javaVersion) ? "11" : "1.8"))
+pomText = pomText.replaceFirst("<javaVersion>.*</javaVersion>", String.format("<javaVersion>%s</javaVersion>", "11".equals(javaVersion) ? "11" : "8"))
 // If user didn't modify appName, replace the expression with real value
 // Set the values here as users will get prompt if we use expressions in <defaultValue> of <requiredProperty> in archetype metadata
 if (appName == null || appName.equals("\$(artifactId)-\$(timestamp)")) {
     def finalAppName = String.format("%s-%s", artifactId, LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMddHHmmssSSS")))
-    def pom = Paths.get(request.getOutputDirectory(), artifactId, pomFile).toFile()
     // Replace the string directly as use XmlNodePrinter will break origin file style and comments
-    def pomText = pom.text.replace("<functionAppName>\$(artifactId)-\$(timestamp)</functionAppName>", String.format("<functionAppName>%s</functionAppName>", finalAppName))
-    // Update java compile version
-    pomText = pomText.replaceFirst("<java.version>.*</java.version>", String.format("<java.version>%s</java.version>", "8".equals(javaVersion) ? "1.8" : "11"))
-    pom.text = pomText;
+    pomText = pomText.replace("<functionAppName>\$(artifactId)-\$(timestamp)</functionAppName>", String.format("<functionAppName>%s</functionAppName>", finalAppName))
 }
+pom.text = pomText
