@@ -3,39 +3,60 @@
 
 This is the Maven Archetype for Azure Functions.
 
-## Azure Parameters
+## Documenation
+Following document is based on this archetype
+- [Quickstart](https://docs.microsoft.com/en-us/azure/azure-functions/functions-create-first-azure-function-azure-cli?tabs=bash%2Cbrowser&pivots=programming-language-java): Create a function in Azure that responds to HTTP requests
 
-Like any other Maven Archetype, you are required to provide values for parameters `groupId` and `artifactId`, the `version` and `package` will have default values if not set.
+## Usage
 
-Besides, Archetypes for Azure Functions provides another parameter `docker`, it will generate docker file with function project when set to `true`.
+To generate an Azure Functions project, please adjust the following command parameters to your needs.
 
-On top of that, five extra Azure parameters are required for Azure Functions deployment. Default value and description for those parameters are listed in below table, you can use their default values or change to your own value with command line options.
+- Adjust `-DgroupId=com.ms` to define the base maven group id
+- Adjust `-DartifactId=azure-function-demo` to define the base maven artifact id
+- Adjust `-DappName=MyFunctionApp` to define the function app name
+- Adjust `-DappRegion=westus` to speicfy the region to deploy
+- Adjust `-DappServicePlanName=java-functions-app-service-plan` to speicfy the app service plan which will host your function app
+- Adjust `-DresourceGroup="java-functions-group` to speicfy the resource group of your function app
+- Adjust the `-DjavaVersion=8` to speicfy the function host java version as well as the project compile level
+
+```bash
+mvn -B archetype:generate \
+    -DarchetypeGroupId=com.microsoft.azure \
+    -DarchetypeArtifactId=azure-functions-archetype \
+    -DgroupId=com.ms \
+    -DartifactId=azure-function-demo \
+    -DappName=MyFunctionApp \
+    -DappRegion=westus \
+    -DappServicePlanName=java-functions-app-service-plan \
+    -DresourceGroup=java-functions-group \
+    -DjavaVersion=8
+```
+> To create a function project with docker support, please add `-Ddocker` to above command
+
+You may also remove `-B` and all `-D` parameters to set the values in interactive mode.
+
+```bash
+mvn archetype:generate -DarchetypeGroupId=com.microsoft.azure -DarchetypeArtifactId=azure-functions-archetype
+```
+
+## Available Parameters
 
 Parameter Name | Default Value | Description
 ---|---|---
+`groupId`| | Base Maven group ID
+`artifactId`| | Base Maven artifact Id
+`package` | `${groupId}` | Java source package
 `appName` | `${artifactId}-${timestamp}` | Specifies the name of your Azure Functions, which will be used to package, run and deploy your project.
 `appRegion` | `westus` | Specifies the region of your Azure Functions, which will be used when creating the new Azure Functions.
 `appServicePlanName` | `java-functions-app-service-plan` | Specifies the app service plan of your Azure Functions, which will be used when creating the new Azure Functions.
 `resourceGroup` | `java-functions-group` | Specifies the resource group of your Azure Functions, which will be used when creating the new Azure Functions.
 `javaVersion` | `8` | Specifies the function host java version as well as the project compile level, supported values are `8` or `11`
+`docker` | `false` | Specifies whether to enable docker support in your function project
 
-## Usage
+## System Requirements
+Azure Functions Core Tools | Azure CLI | Java SE | Maven
+---------|---------|---------|---------
+[2.7.2796+](https://github.com/Azure/azure-functions-core-tools/releases/tag/2.7.2796)/[3.0.2798+](https://github.com/Azure/azure-functions-core-tools/releases/tag/3.0.2798) | 2.4+ | 8,11 | 3.3.3+
 
-### Interactive Mode
-Run below command to create projects for Azure Java Functions in interactive mode.
-
-```cmd
-mvn archetype:generate -DarchetypeGroupId=com.microsoft.azure -DarchetypeArtifactId=azure-functions-archetype
-```
-
-To create a function project with docker support, please add -Ddocker to above command
-
-```cmd
-mvn archetype:generate -DarchetypeGroupId=com.microsoft.azure -DarchetypeArtifactId=azure-functions-archetype -Ddocker
-```
-
-### Batch Mode
-Refer to the example at [here](https://maven.apache.org/archetype/maven-archetype-plugin/examples/generate-batch.html) to generate project in batch mode.
-
-### More Information
+## More Information
 For more information about how to build/test the function project, please refer to the documents of [Maven Plugin for Azure Functions](https://github.com/Microsoft/azure-maven-plugins/blob/master/azure-functions-maven-plugin/README.md).
