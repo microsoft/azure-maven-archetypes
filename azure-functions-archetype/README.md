@@ -3,16 +3,16 @@
 
 This is the Maven Archetype for Azure Functions.
 
-## Documenation
+## Documentation
 Following document is based on this archetype
 - [Quickstart](https://docs.microsoft.com/en-us/azure/azure-functions/functions-create-first-azure-function-azure-cli?tabs=bash%2Cbrowser&pivots=programming-language-java): Create a function in Azure that responds to HTTP requests
 
 ## Usage
 
-To generate an Azure Functions project, please adjust the following command parameters to your needs.
+To generate an Azure Functions project, please adjust the following parameters to your needs.
 
-- Adjust `-DgroupId=com.ms` to define the base maven group id
-- Adjust `-DartifactId=azure-function-demo` to define the base maven artifact id
+- Adjust `-DgroupId=com.ms` to define the base Maven group ID
+- Adjust `-DartifactId=azure-function-demo` to define the base Maven artifact ID
 - Adjust `-DappName=MyFunctionApp` to define the function app name
 - Adjust `-DappRegion=westus` to speicfy the region to deploy
 - Adjust `-DappServicePlanName=java-functions-app-service-plan` to speicfy the app service plan which will host your function app
