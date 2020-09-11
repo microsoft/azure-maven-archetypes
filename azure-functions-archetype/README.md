@@ -10,7 +10,13 @@ Please follow the following documents for how to use this archetype
 
 ## Usage
 
-To generate an Azure Functions project, please adjust the following parameters to your needs.
+Run below command to create projects for Azure Java Functions in interactive mode.
+
+```bash
+mvn archetype:generate -DarchetypeGroupId=com.microsoft.azure -DarchetypeArtifactId=azure-functions-archetype
+```
+
+To generate the project in batch mode, please adjust the following parameters to your needs.
 
 - Adjust `-DgroupId=com.ms` to define the base Maven group ID
 - Adjust `-DartifactId=azure-function-demo` to define the base Maven artifact ID
@@ -33,12 +39,6 @@ mvn -B archetype:generate \
     -DjavaVersion=8
 ```
 > To create a function project with docker support, please add `-Ddocker` to above command
-
-If you remove the -B argument, you will enter the interactive mode, all the parameters in above table will be promoted to you.
-
-```bash
-mvn archetype:generate -DarchetypeGroupId=com.microsoft.azure -DarchetypeArtifactId=azure-functions-archetype
-```
 
 ## Available Parameters
 
