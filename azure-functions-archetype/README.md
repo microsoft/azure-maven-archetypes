@@ -4,8 +4,9 @@
 This is the Maven Archetype for Azure Functions.
 
 ## Documentation
-Following document is based on this archetype
+Please follow the following documents for how to use this archetype
 - [Quickstart](https://docs.microsoft.com/en-us/azure/azure-functions/functions-create-first-azure-function-azure-cli?tabs=bash%2Cbrowser&pivots=programming-language-java): Create a function in Azure that responds to HTTP requests
+- [Tutorials](https://docs.microsoft.com/en-us/azure/azure-functions/functions-create-function-linux-custom-image?tabs=bash%2Cportal&pivots=programming-language-java): Create a function on Linux using a custom container
 
 ## Usage
 
@@ -33,7 +34,7 @@ mvn -B archetype:generate \
 ```
 > To create a function project with docker support, please add `-Ddocker` to above command
 
-You may also remove `-B` and all `-D` parameters to set the values in interactive mode.
+If you remove the -B argument, you will enter the interactive mode, all the parameters in above table will be promoted to you.
 
 ```bash
 mvn archetype:generate -DarchetypeGroupId=com.microsoft.azure -DarchetypeArtifactId=azure-functions-archetype
@@ -45,13 +46,13 @@ Parameter Name | Default Value | Description
 ---|---|---
 `groupId`| | Base Maven group ID
 `artifactId`| | Base Maven artifact Id
-`package` | `${groupId}` | Java source package
-`appName` | `${artifactId}-${timestamp}` | Specifies the name of your Azure Functions, which will be used to package, run and deploy your project.
-`appRegion` | `westus` | Specifies the region of your Azure Functions, which will be used when creating the new Azure Functions.
-`appServicePlanName` | `java-functions-app-service-plan` | Specifies the app service plan of your Azure Functions, which will be used when creating the new Azure Functions.
-`resourceGroup` | `java-functions-group` | Specifies the resource group of your Azure Functions, which will be used when creating the new Azure Functions.
-`javaVersion` | `8` | Specifies the function host java version as well as the project compile level, supported values are `8` or `11`
-`docker` | `false` | Specifies whether to enable docker support in your function project
+`package` | `${groupId}` | Base package name for java source codes
+`appName` | `${artifactId}-${timestamp}` | The name of your Azure Functions, which will be used to package, run and deploy your project.
+`appRegion` | `westus` | The region of your Azure Functions, which will be used when creating the new Azure Functions.
+`appServicePlanName` | `java-functions-app-service-plan` | The the app service plan of your Azure Functions, which will be used when creating the new Azure Functions.
+`resourceGroup` | `java-functions-group` | The the resource group of your Azure Functions, which will be used when creating the new Azure Functions.
+`javaVersion` | `8` | The the function host java version as well as the project compile level, supported values are `8` or `11`
+`docker` | `false` | The whether to enable docker support in your function project
 
 ## System Requirements
 Azure Functions Core Tools | Azure CLI | Java SE | Maven
