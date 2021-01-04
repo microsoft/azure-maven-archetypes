@@ -55,7 +55,7 @@ Parameter Name | Default Value | Description
 `resourceGroup` | `java-functions-group` | The the resource group of your Azure Functions, which will be used when creating the new Azure Functions.
 `javaVersion` | `8` | The the function host java version as well as the project compile level, supported values are `8` or `11`
 `docker` | `false` | The whether to enable docker support in your function project
-`docker` | `HttpTrigger` | Specify the trigger type of Azure Function, supported values are `BlobTrigger`,`QueueTrigger`,`TimerTrigger`,`EventGridTrigger`,`EventHubTrigger`,`CosmosDBTrigger`,`ServiceBusQueueTrigger`,`ServiceBusTopicTrigger` and `HttpTrigger`
+`trigger` | `HttpTrigger` | Specify the trigger type of Azure Function, supported values are `BlobTrigger`,`QueueTrigger`,`TimerTrigger`,`EventGridTrigger`,`EventHubTrigger`,`CosmosDBTrigger`,`ServiceBusQueueTrigger`,`ServiceBusTopicTrigger` and `HttpTrigger`
 
 
 ## System Requirements
