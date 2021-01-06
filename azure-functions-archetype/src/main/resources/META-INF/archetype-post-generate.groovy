@@ -40,10 +40,10 @@ def trigger = request.getProperties().get("trigger");
 // todo: remove the parameter with default values, may need to update maven plugin
 def templateMap = [
         "BlobTrigger"           : "-Dfunctions.template=BlobTrigger -Dconnection=\"<connection>\" -Dpath=mycontainer",
-        "QueueTrigger"          : "-Dfunctions.template=QueueTrigger -Dconnection=\"<connection>\"",
+        "QueueTrigger"          : "-Dfunctions.template=QueueTrigger -Dconnection=\"<connection>\" -DqueueName=myqueue",
         "TimerTrigger"          : "-Dfunctions.template=TimerTrigger -Dschedule=\"0 * * * * *\"",
         "EventGridTrigger"      : "-Dfunctions.template=EventGridTrigger",
-        "EventHubTrigger"       : "-Dfunctions.template=EventHubTrigger -Dconnection=\"<connection>\" -DeventHubName=myeventhub -DconsumerGroup=\$Default ",
+        "EventHubTrigger"       : "-Dfunctions.template=EventHubTrigger -Dconnection=\"<connection>\" -DeventHubName=myeventhub -DconsumerGroup=\$Default",
         "CosmosDBTrigger"       : "-Dfunctions.template=CosmosDBTrigger -DconnectionStringSetting=\"<connection_string_setting>\" -DdatabaseName=\"<databaseName>\" -DcollectionName=\"<collectionName>\" -DleaseCollectionName=\"<leaseCollectionName>\"",
         "ServiceBusQueueTrigger": "-Dfunctions.template=ServiceBusQueueTrigger -Dconnection=\"<connection>\" -DqueueName=mysbqueue",
         "ServiceBusTopicTrigger": "-Dfunctions.template=ServiceBusTopicTrigger -Dconnection=\"<connection>\" -DtopicName=mysbtopic -DsubscriptionName=mysubscription",
@@ -61,7 +61,15 @@ if (!"HttpTrigger".equalsIgnoreCase(trigger)) {
     def starter = isWindows ? "cmd.exe" : "/bin/sh"
     def switcher = isWindows ? "/c" : "-c"
     def command = "mvn azure-functions:add -f ${pom.getAbsolutePath()} -Dfunctions.package=${request.getProperties().get("groupId")} -Dfunctions.name=Function ${triggerParameter} -B"
+    if (!isWindows) {
+        command = command.replace("\$", "\\\$")
+    }
+    def output = new StringBuilder()
     def proc = [starter, switcher, command].execute();
+    proc.consumeProcessOutput(output, output)
     proc.waitForOrKill(60 * 1000); // wait for 60s
-    // Todo: check the execution result and show correspond prompt
+    if (proc.exitValue() != 0 || output == null || !output.contains("BUILD SUCCESS")) {
+        println("Failed to generate target trigger, please run `mvn azure-functions:add` manually in project root")
+        println("Output: \n${output}")
+    }
 }
