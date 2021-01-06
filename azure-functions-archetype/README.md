@@ -21,10 +21,10 @@ To generate the project in batch mode, please adjust the following parameters to
 - Adjust `-DgroupId=com.ms` to define the base Maven group ID
 - Adjust `-DartifactId=azure-function-demo` to define the base Maven artifact ID
 - Adjust `-DappName=MyFunctionApp` to define the function app name
-- Adjust `-DappRegion=westus` to speicfy the region to deploy
-- Adjust `-DappServicePlanName=java-functions-app-service-plan` to speicfy the app service plan which will host your function app
-- Adjust `-DresourceGroup="java-functions-group` to speicfy the resource group of your function app
-- Adjust the `-DjavaVersion=8` to speicfy the function host java version as well as the project compile level
+- Adjust `-DappRegion=westus` to specify the region to deploy
+- Adjust `-DappServicePlanName=java-functions-app-service-plan` to specify the app service plan which will host your function app
+- Adjust `-DresourceGroup="java-functions-group` to specify the resource group of your function app
+- Adjust the `-DjavaVersion=8` to specify the function host java version as well as the project compile level
 
 ```bash
 mvn -B archetype:generate \
@@ -40,7 +40,7 @@ mvn -B archetype:generate \
 ```
 > To create a function project with docker support, please add `-Ddocker` to above command
 
-> To create a function proejct with speicfic trigger, please use `-Dtrigger` to speicfy the trigger type
+> To create a function proejct with specific trigger, please use `-Dtrigger` to specify the trigger type
 
 ## Available Parameters
 
