@@ -40,7 +40,7 @@ mvn -B archetype:generate \
 ```
 > To create a function project with docker support, please add `-Ddocker` to above command
 
-> To create a function proejct with specific trigger, please use `-Dtrigger` to specify the trigger type
+> To create a function project with specific trigger, please use `-Dtrigger` to specify the trigger type
 
 ## Available Parameters
 
