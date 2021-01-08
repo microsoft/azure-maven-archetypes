@@ -21,10 +21,10 @@ To generate the project in batch mode, please adjust the following parameters to
 - Adjust `-DgroupId=com.ms` to define the base Maven group ID
 - Adjust `-DartifactId=azure-function-demo` to define the base Maven artifact ID
 - Adjust `-DappName=MyFunctionApp` to define the function app name
-- Adjust `-DappRegion=westus` to speicfy the region to deploy
-- Adjust `-DappServicePlanName=java-functions-app-service-plan` to speicfy the app service plan which will host your function app
-- Adjust `-DresourceGroup="java-functions-group` to speicfy the resource group of your function app
-- Adjust the `-DjavaVersion=8` to speicfy the function host java version as well as the project compile level
+- Adjust `-DappRegion=westus` to specify the region to deploy
+- Adjust `-DappServicePlanName=java-functions-app-service-plan` to specify the app service plan which will host your function app
+- Adjust `-DresourceGroup="java-functions-group` to specify the resource group of your function app
+- Adjust the `-DjavaVersion=8` to specify the function host java version as well as the project compile level
 
 ```bash
 mvn -B archetype:generate \
@@ -40,6 +40,8 @@ mvn -B archetype:generate \
 ```
 > To create a function project with docker support, please add `-Ddocker` to above command
 
+> To create a function project with specific trigger, please use `-Dtrigger` to specify the trigger type
+
 ## Available Parameters
 
 Parameter Name | Default Value | Description
@@ -53,6 +55,8 @@ Parameter Name | Default Value | Description
 `resourceGroup` | `java-functions-group` | The the resource group of your Azure Functions, which will be used when creating the new Azure Functions.
 `javaVersion` | `8` | The the function host java version as well as the project compile level, supported values are `8` or `11`
 `docker` | `false` | The whether to enable docker support in your function project
+`trigger` | `HttpTrigger` | Specify the trigger type of Azure Function, supported values are `BlobTrigger`,`QueueTrigger`,`TimerTrigger`,`EventGridTrigger`,`EventHubTrigger`,`CosmosDBTrigger`,`ServiceBusQueueTrigger`,`ServiceBusTopicTrigger` and `HttpTrigger`
+
 
 ## System Requirements
 Azure Functions Core Tools | Azure CLI | Java SE | Maven
