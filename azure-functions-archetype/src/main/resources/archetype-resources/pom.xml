@@ -11,7 +11,11 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <java.version>#if(${javaVersion}=="11")11(#else)1.8#end</java.version>
+#if(${javaVersion}=="11")
+        <java.version>11</java.version>
+#else
+        <java.version>1.8</java.version>
+#end
         <azure.functions.maven.plugin.version>1.10.1</azure.functions.maven.plugin.version>
         <azure.functions.java.library.version>1.4.2</azure.functions.java.library.version>
 #if(${appName}=="$(artifactId)-$(timestamp)")
@@ -87,7 +91,11 @@
 #else
                         <!-- runtime os, could be windows, linux or docker-->
                         <os>windows</os>
-                        <javaVersion>#if(${javaVersion}=="11")11(#else)8#end</javaVersion>
+#if(${javaVersion}=="11")
+                        <javaVersion>11</javaVersion>
+#else
+                        <javaVersion>8</javaVersion>
+#end
 #end
                     </runtime>
                     <appSettings>
