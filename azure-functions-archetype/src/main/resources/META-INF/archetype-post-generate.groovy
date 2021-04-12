@@ -38,7 +38,7 @@ def pomFile = new File(rootDir, "pom.xml")
 def isWindows = System.properties['os.name'].toLowerCase().contains('windows')
 def starter = isWindows ? "cmd.exe" : "/bin/sh"
 def switcher = isWindows ? "/c" : "-c"
-def command = "mvn azure-functions:add -f ${pomFile.getAbsolutePath()} -Dfunctions.package=${request.getProperties().get("groupId")} -Dfunctions.name=Function ${triggerParameter} -B"
+def command = "mvn azure-functions:add -f \"${pomFile.getAbsolutePath()}\" -Dfunctions.package=\"${request.getProperties().get("groupId")}\" -Dfunctions.name=\"Function\" ${triggerParameter} -B"
 if (!isWindows) {
     command = command.replace("\$", "\\\$")
 }
