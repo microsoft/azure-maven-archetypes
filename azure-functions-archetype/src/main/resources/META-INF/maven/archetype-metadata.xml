@@ -60,7 +60,6 @@
                 <include>*.json</include>
                 <include>.gitignore</include>
                 <include>Dockerfile</include>
-                <include>pom-docker.xml</include>
             </includes>
         </fileSet>
     </fileSets>

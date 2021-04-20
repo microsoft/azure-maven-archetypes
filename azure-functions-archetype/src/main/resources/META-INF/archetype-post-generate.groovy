@@ -1,42 +1,23 @@
 import java.nio.file.Files
 import java.nio.file.StandardCopyOption;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.nio.file.Paths;
 
-def isDocker = request.getProperties().get("docker")
-def artifactId = request.getProperties().get("artifactId")
-def dockerFile = "Dockerfile"
-def pomFile = "pom.xml"
-def dockerPomFile = "pom-docker.xml"
 def rootDir = Paths.get(request.getOutputDirectory(), artifactId).toFile()
-if (Boolean.valueOf(isDocker)) {
-    // For docker, replace origin pom.xml with pom-docker.xml
-    Files.move(new File(rootDir, dockerPomFile).toPath(), new File(rootDir, pomFile).toPath(), StandardCopyOption.REPLACE_EXISTING)
-} else {
-    // Otherwise, remove Dockerfile and pom-docker.xml
-    Files.deleteIfExists(new File(rootDir, dockerFile).toPath())
-    Files.deleteIfExists(new File(rootDir, dockerPomFile).toPath())
-}
 
-def appName = request.getProperties().get("appName")
-def javaVersion = request.getProperties().get("javaVersion")
-def pom = Paths.get(request.getOutputDirectory(), artifactId, pomFile).toFile()
-def pomText = pom.text
-// Update java compile version & java runtime version
-// Supported values are 8/11, otherwise will use java 8 by default
-pomText = pomText.replaceFirst("<java.version>.*</java.version>", String.format("<java.version>%s</java.version>", "11".equals(javaVersion) ? "11" : "1.8"))
-pomText = pomText.replaceFirst("<javaVersion>.*</javaVersion>", String.format("<javaVersion>%s</javaVersion>", "11".equals(javaVersion) ? "11" : "8"))
-// If user didn't modify appName, replace the expression with real value
-// Set the values here as users will get prompt if we use expressions in <defaultValue> of <requiredProperty> in archetype metadata
-if (appName == null || appName.equals("\$(artifactId)-\$(timestamp)")) {
-    def finalAppName = String.format("%s-%s", artifactId, LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMddHHmmssSSS")))
-    // Replace the string directly as use XmlNodePrinter will break origin file style and comments
-    pomText = pomText.replace("<functionAppName>\$(artifactId)-\$(timestamp)</functionAppName>", String.format("<functionAppName>%s</functionAppName>", finalAppName))
+def isDocker = request.getProperties().get("docker")
+if (!Boolean.valueOf(isDocker)) {
+    def artifactId = request.getProperties().get("artifactId")
+    def dockerFile = "Dockerfile"
+    Files.deleteIfExists(new File(rootDir, dockerFile).toPath()) // Delete Dockerfile for none-docker project
 }
-pom.text = pomText
 
 def trigger = request.getProperties().get("trigger");
+if ("HttpTrigger".equalsIgnoreCase(trigger) || "Http".equalsIgnoreCase(trigger)) {
+    return
+}
+// Remove origin source dir which contains unused test cases
+def sourceFolder = new File(rootDir, "src")
+sourceFolder.deleteDir()
 // todo: remove the parameter with default values, may need to update maven plugin
 def templateMap = [
         "BlobTrigger"           : "-Dfunctions.template=BlobTrigger -Dconnection=\"<connection>\" -Dpath=mycontainer",
@@ -48,28 +29,24 @@ def templateMap = [
         "ServiceBusQueueTrigger": "-Dfunctions.template=ServiceBusQueueTrigger -Dconnection=\"<connection>\" -DqueueName=mysbqueue",
         "ServiceBusTopicTrigger": "-Dfunctions.template=ServiceBusTopicTrigger -Dconnection=\"<connection>\" -DtopicName=mysbtopic -DsubscriptionName=mysubscription",
 ];
-if (!"HttpTrigger".equalsIgnoreCase(trigger)) {
-    println("Generating trigger from template, please replace the values with placeholder in annotation with real value if necessary")
-    def triggerParameter = templateMap.get(trigger)
-    if (triggerParameter == null) {
-        println(String.format("Invalid trigger type, supported values are %s and HttpTrigger, using HttpTrigger by default", String.join(",", templateMap.keySet())));
-        return
-    }
-    def sourceFolder = new File(rootDir, "src")
-    sourceFolder.deleteDir(); // Remove origin source dir which contains unused test cases
-    def isWindows = System.properties['os.name'].toLowerCase().contains('windows')
-    def starter = isWindows ? "cmd.exe" : "/bin/sh"
-    def switcher = isWindows ? "/c" : "-c"
-    def command = "mvn azure-functions:add -f ${pom.getAbsolutePath()} -Dfunctions.package=${request.getProperties().get("groupId")} -Dfunctions.name=Function ${triggerParameter} -B"
-    if (!isWindows) {
-        command = command.replace("\$", "\\\$")
-    }
-    def output = new StringBuilder()
-    def proc = [starter, switcher, command].execute();
-    proc.consumeProcessOutput(output, output)
-    proc.waitForOrKill(60 * 1000); // wait for 60s
-    if (proc.exitValue() != 0 || output == null || !output.contains("BUILD SUCCESS")) {
-        println("Failed to generate target trigger, please run `mvn azure-functions:add` manually in project root")
-        println("Output: \n${output}")
-    }
+def triggerParameter = templateMap.keySet().stream()
+        .filter({ key -> key.equalsIgnoreCase(trigger) || key.substring(0, key.lastIndexOf("Trigger")).equalsIgnoreCase(trigger) }).findFirst()
+        .map(templateMap.&get)
+        .orElseThrow({ ->  new RuntimeException(String.format("Invalid trigger type `%s`, supported values are %s and HttpTrigger", trigger, String.join(",", templateMap.keySet()))) })
+println("Generating trigger from template, please replace the values with placeholder in annotation with real value if necessary")
+def pomFile = new File(rootDir, "pom.xml")
+def isWindows = System.properties['os.name'].toLowerCase().contains('windows')
+def starter = isWindows ? "cmd.exe" : "/bin/sh"
+def switcher = isWindows ? "/c" : "-c"
+def command = "mvn azure-functions:add -f \"${pomFile.getAbsolutePath()}\" -Dfunctions.package=\"${request.getProperties().get("groupId")}\" -Dfunctions.name=\"Function\" ${triggerParameter} -B"
+if (!isWindows) {
+    command = command.replace("\$", "\\\$")
+}
+def output = new StringBuilder()
+def proc = [starter, switcher, command].execute();
+proc.consumeProcessOutput(output, output)
+proc.waitForOrKill(60 * 1000); // wait for 60s
+if (proc.exitValue() != 0 || output == null || !output.contains("BUILD SUCCESS")) {
+    println("${output}")
+    throw new RuntimeException("Failed to generate target trigger, please run `mvn azure-functions:add` manually in project root")
 }
