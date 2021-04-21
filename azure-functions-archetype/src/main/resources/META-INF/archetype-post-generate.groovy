@@ -28,6 +28,7 @@ def templateMap = [
         "CosmosDBTrigger"       : "-Dfunctions.template=CosmosDBTrigger -DconnectionStringSetting=\"<connection_string_setting>\" -DdatabaseName=\"<databaseName>\" -DcollectionName=\"<collectionName>\" -DleaseCollectionName=\"<leaseCollectionName>\"",
         "ServiceBusQueueTrigger": "-Dfunctions.template=ServiceBusQueueTrigger -Dconnection=\"<connection>\" -DqueueName=mysbqueue",
         "ServiceBusTopicTrigger": "-Dfunctions.template=ServiceBusTopicTrigger -Dconnection=\"<connection>\" -DtopicName=mysbtopic -DsubscriptionName=mysubscription",
+        "RabbitMQTrigger"       : "-Dfunctions.template=RabbitMQTrigger -DconnectionStringSetting=\"<connection>\" -DqueueName=myqueue",
 ];
 def triggerParameter = templateMap.keySet().stream()
         .filter({ key -> key.equalsIgnoreCase(trigger) || key.substring(0, key.lastIndexOf("Trigger")).equalsIgnoreCase(trigger) }).findFirst()
