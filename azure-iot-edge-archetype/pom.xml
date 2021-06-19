@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.microsoft.azure</groupId>
@@ -13,9 +15,6 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <azure.iot.device.client.version>1.26.0</azure.iot.device.client.version>
-        <maven.compiler.target>1.8</maven.compiler.target>
-        <maven.compiler.source>1.8</maven.compiler.source>
     </properties>
 
     <licenses>
@@ -33,58 +32,12 @@
         <tag>HEAD</tag>
     </scm>
 
-    <build>
-    <plugins>
-      <plugin>
-        <artifactId>maven-jar-plugin</artifactId>
-        <configuration>
-          <archive>
-            <manifest>
-              <addClasspath>true</addClasspath>
-              <mainClass>com.edgemodule.App</mainClass>
-            </manifest>
-          </archive>
-        </configuration>
-      </plugin>
-      <plugin>
-        <artifactId>maven-shade-plugin</artifactId>
-        <executions>
-          <execution>
-            <phase>package</phase>
-            <goals>
-              <goal>shade</goal>
-            </goals>
-            <configuration>
-              <filters>
-                <filter>
-                  <artifact>*:*</artifact>
-                  <excludes>
-                    <exclude>META-INF/*.SF</exclude>
-                    <exclude>META-INF/*.RSA</exclude>
-                  </excludes>
-                </filter>
-              </filters>
-              <shadedArtifactAttached>true</shadedArtifactAttached>
-              <shadedClassifierName>with-deps</shadedClassifierName>
-            </configuration>
-          </execution>
-        </executions>
-      </plugin>
-    </plugins>
-  </build>
-
-    <dependencies>
-    <dependency>
-      <groupId>com.microsoft.azure.sdk.iot</groupId>
-      <artifactId>iot-device-client</artifactId>
-    </dependency>
-  </dependencies>
-
     <distributionManagement>
       <snapshotRepository>
         <id>ossrh</id>
         <name>Sonatype Snapshots</name>
         <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+        <uniqueVersion>true</uniqueVersion>
         <layout>default</layout>
       </snapshotRepository>
     </distributionManagement>
