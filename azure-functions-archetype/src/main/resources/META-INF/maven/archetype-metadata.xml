@@ -35,6 +35,10 @@
         <requiredProperty key="javaVersion">
             <defaultValue>8</defaultValue>
         </requiredProperty>
+
+        <requiredProperty key="trigger">
+            <defaultValue>HttpTrigger</defaultValue>
+        </requiredProperty>
     </requiredProperties>
 
     <fileSets>
@@ -56,7 +60,6 @@
                 <include>*.json</include>
                 <include>.gitignore</include>
                 <include>Dockerfile</include>
-                <include>pom-docker.xml</include>
             </includes>
         </fileSet>
     </fileSets>
