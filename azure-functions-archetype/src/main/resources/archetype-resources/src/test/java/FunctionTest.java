@@ -48,6 +48,6 @@ public class FunctionTest {
         final HttpResponseMessage ret = new Function().run(req, context);
 
         // Verify
-        assertEquals(ret.getStatus(), HttpStatus.OK);
+        assertEquals(HttpStatus.OK, ret.getStatus());
     }
 }
