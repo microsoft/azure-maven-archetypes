@@ -103,7 +103,7 @@
                     <appSettings>
                         <property>
                             <name>FUNCTIONS_EXTENSION_VERSION</name>
-                            <value>~4</value>
+                            <value>~3</value>
                         </property>
                     </appSettings>
                 </configuration>
