@@ -20,6 +20,9 @@ on:
   schedule:
     - cron: '34 9 * * 0'
 
+env:
+  FUNCTIONCLI_URL: https://functionsclibuilds.blob.core.windows.net/builds/2/latest/Azure.Functions.Cli.win-x64.zip
+
 jobs:
   analyze:
     name: Analyze
