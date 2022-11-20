@@ -79,8 +79,8 @@ jobs:
         mkdir testprojects
         cd testprojects
         mvn archetype:generate -DarchetypeCatalog="local" -DarchetypeGroupId="com.microsoft.azure" -DarchetypeArtifactId="azure-functions-archetype" -DarchetypeVersion="$archetypeVersion" -DgroupId="com.microsoft" -DartifactId="e2etestproject" -Dversion="1.0-SNAPSHOT" -Dpackage="com.microsoft" -B
-        mvn -f ".\e2etestproject\pom.xml" clean package
-        cd ..
+        cd e2etestproject
+        mvn clean package
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v2
