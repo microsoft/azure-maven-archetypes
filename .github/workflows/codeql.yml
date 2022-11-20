@@ -20,6 +20,9 @@ on:
   schedule:
     - cron: '34 9 * * 0'
 
+env:
+  FUNCTIONCLI_URL: https://functionsclibuilds.blob.core.windows.net/builds/2/latest/Azure.Functions.Cli.win-x64.zip
+
 jobs:
   analyze:
     name: Analyze
@@ -55,18 +58,29 @@ jobs:
 
     # Autobuild attempts to build any compiled languages  (C/C++, C#, Go, or Java).
     # If this step fails, then you should remove it and run the build manually (see below)
-    - name: Autobuild
-      uses: github/codeql-action/autobuild@v2
+    # - name: Autobuild
+    #   uses: github/codeql-action/autobuild@v2
 
     # ℹ️ Command-line programs to run using the OS shell.
     # 📚 See https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_idstepsrun
 
     #   If the Autobuild fails above, remove it and uncomment the following three lines.
     #   modify them (or add more) to build your code if your project, please refer to the EXAMPLE below for guidance.
-
-    # - run: |
-    #   echo "Run, Build Application using script"
-    #   ./location_of_script_within_repo/buildscript.sh
+    - name: Buid
+      shell: pwsh
+      run: |
+        # .\e2etest.ps1
+        # Install maven plguin archetype
+        mvn clean install
+        # Generate function project through archetype
+        # $testProjectBaseFolder = ".\testprojects"
+        # Get the version of archetype and set archetypeVersion in following steps
+        $archetypeVersion = ([xml](gc ".\azure-functions-archetype\pom.xml")).project.version 
+        mkdir testprojects
+        cd testprojects
+        mvn archetype:generate -DarchetypeCatalog="local" -DarchetypeGroupId="com.microsoft.azure" -DarchetypeArtifactId="azure-functions-archetype" -DarchetypeVersion="$archetypeVersion" -DgroupId="com.microsoft" -DartifactId="e2etestproject" -Dversion="1.0-SNAPSHOT" -Dpackage="com.microsoft" -B
+        cd e2etestproject
+        mvn clean package
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v2
