@@ -23,6 +23,12 @@
 #else
         <functionAppName>${appName}</functionAppName>
 #end
+#if(${trigger.toLowerCase()}=="rabbitmq" || ${trigger.toLowerCase()}=="rabbitmqtrigger")
+        <azure.functions.java.library.rabbitmq.version>2.0.3</azure.functions.java.library.rabbitmq.version>
+#end
+#if(${trigger.toLowerCase()}=="durablefunctions")
+        <durabletask.azure.functions.version>1.0.0-beta.1</durabletask.azure.functions.version>
+#end
     </properties>
 
     <dependencies>
@@ -31,7 +37,20 @@
             <artifactId>azure-functions-java-library</artifactId>
             <version>${azure.functions.java.library.version}</version>
         </dependency>
-
+#if(${trigger.toLowerCase()}=="rabbitmq" || ${trigger.toLowerCase()}=="rabbitmqtrigger")
+        <dependency>
+            <groupId>com.microsoft.azure.functions</groupId>
+            <artifactId>azure-functions-java-library-rabbitmq</artifactId>
+            <version>${azure.functions.java.library.rabbitmq.version}</version>
+        </dependency>
+#end
+#if(${trigger.toLowerCase()}=="durablefunctions")
+        <dependency>
+            <groupId>com.microsoft</groupId>
+            <artifactId>durabletask-azure-functions</artifactId>
+            <version>${durabletask.azure.functions.version}</version>
+        </dependency>
+#end
         <!-- Test -->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
