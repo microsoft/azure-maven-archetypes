@@ -11,17 +11,23 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-#if(${javaVersion}=="11")
-        <java.version>11</java.version>
-#else
+#if(${javaVersion}=="8")
         <java.version>1.8</java.version>
+#else
+        <java.version>${javaVersion}</java.version>
 #end
-        <azure.functions.maven.plugin.version>1.11.0</azure.functions.maven.plugin.version>
-        <azure.functions.java.library.version>1.4.2</azure.functions.java.library.version>
+        <azure.functions.maven.plugin.version>1.22.0-SNAPSHOT</azure.functions.maven.plugin.version>
+        <azure.functions.java.library.version>2.2.0</azure.functions.java.library.version>
 #if(${appName}=="$(artifactId)-$(timestamp)")
         <functionAppName>${artifactId.toLowerCase()}-${package.getClass().forName("java.time.LocalDateTime").getMethod("now").invoke(null).format($package.Class.forName("java.time.format.DateTimeFormatter").getMethod("ofPattern", $package.Class).invoke(null, "yyyyMMddHHmmssSSS"))}</functionAppName>
 #else
         <functionAppName>${appName}</functionAppName>
+#end
+#if(${trigger.toLowerCase()}=="rabbitmq" || ${trigger.toLowerCase()}=="rabbitmqtrigger")
+        <azure.functions.java.library.rabbitmq.version>2.0.3</azure.functions.java.library.rabbitmq.version>
+#end
+#if(${trigger.toLowerCase()}=="durablefunctions")
+        <durabletask.azure.functions.version>1.0.0-beta.1</durabletask.azure.functions.version>
 #end
     </properties>
 
@@ -31,7 +37,20 @@
             <artifactId>azure-functions-java-library</artifactId>
             <version>${azure.functions.java.library.version}</version>
         </dependency>
-
+#if(${trigger.toLowerCase()}=="rabbitmq" || ${trigger.toLowerCase()}=="rabbitmqtrigger")
+        <dependency>
+            <groupId>com.microsoft.azure.functions</groupId>
+            <artifactId>azure-functions-java-library-rabbitmq</artifactId>
+            <version>${azure.functions.java.library.rabbitmq.version}</version>
+        </dependency>
+#end
+#if(${trigger.toLowerCase()}=="durablefunctions")
+        <dependency>
+            <groupId>com.microsoft</groupId>
+            <artifactId>durabletask-azure-functions</artifactId>
+            <version>${durabletask.azure.functions.version}</version>
+        </dependency>
+#end
         <!-- Test -->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
@@ -93,17 +112,13 @@
 #else
                         <!-- runtime os, could be windows, linux or docker-->
                         <os>windows</os>
-#if(${javaVersion}=="11")
-                        <javaVersion>11</javaVersion>
-#else
-                        <javaVersion>8</javaVersion>
-#end
+                        <javaVersion>${javaVersion}</javaVersion>
 #end
                     </runtime>
                     <appSettings>
                         <property>
                             <name>FUNCTIONS_EXTENSION_VERSION</name>
-                            <value>~3</value>
+                            <value>~4</value>
                         </property>
                     </appSettings>
                 </configuration>
