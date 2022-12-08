@@ -17,7 +17,11 @@
         <java.version>${javaVersion}</java.version>
 #end
         <azure.functions.maven.plugin.version>1.22.0</azure.functions.maven.plugin.version>
+#if(${trigger.toLowerCase()}=="durablefunctions")
+        <azure.functions.java.library.version>3.0.0</azure.functions.java.library.version>
+#else
         <azure.functions.java.library.version>2.2.0</azure.functions.java.library.version>
+#end
 #if(${appName}=="$(artifactId)-$(timestamp)")
         <functionAppName>${artifactId.toLowerCase()}-${package.getClass().forName("java.time.LocalDateTime").getMethod("now").invoke(null).format($package.Class.forName("java.time.format.DateTimeFormatter").getMethod("ofPattern", $package.Class).invoke(null, "yyyyMMddHHmmssSSS"))}</functionAppName>
 #else
