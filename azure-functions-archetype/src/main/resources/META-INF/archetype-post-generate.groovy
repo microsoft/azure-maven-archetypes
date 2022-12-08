@@ -35,7 +35,7 @@ def templateMap = [
 def triggerParameter = templateMap.keySet().stream()
         .filter({ key -> key.equalsIgnoreCase(trigger) || (key.lastIndexOf("Trigger") > 0 && key.substring(0, key.lastIndexOf("Trigger")).equalsIgnoreCase(trigger)) }).findFirst()
         .map(templateMap.&get)
-        .orElseThrow({ ->  new RuntimeException(String.format("Invalid trigger type `%s`, supported values are %s and HttpTrigger", trigger, String.join(",", templateMap.keySet()))) })
+        .orElseThrow({ ->  new RuntimeException(String.format("Invalid trigger type `%s`, supported values are %s and HttpTrigger", trigger, String.join(", ", templateMap.keySet()))) })
 println("Generating trigger from template, which may take some moments. Please replace the values with placeholder in annotation with real value if necessary")
 def pomFile = new File(rootDir, "pom.xml")
 def isWindows = System.properties['os.name'].toLowerCase().contains('windows')
