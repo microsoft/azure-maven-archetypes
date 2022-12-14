@@ -16,7 +16,7 @@
 #else
         <java.version>${javaVersion}</java.version>
 #end
-        <azure.functions.maven.plugin.version>1.22.0</azure.functions.maven.plugin.version>
+        <azure.functions.maven.plugin.version>1.22.1</azure.functions.maven.plugin.version>
 #if(${trigger.toLowerCase()}=="durablefunctions")
         <azure.functions.java.library.version>3.0.0</azure.functions.java.library.version>
 #else
