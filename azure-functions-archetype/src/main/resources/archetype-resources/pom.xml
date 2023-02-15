@@ -30,6 +30,10 @@
 #if(${trigger.toLowerCase()}=="rabbitmq" || ${trigger.toLowerCase()}=="rabbitmqtrigger")
         <azure.functions.java.library.rabbitmq.version>2.0.3</azure.functions.java.library.rabbitmq.version>
 #end
+#if(${trigger.toLowerCase()}=="sqlinputbinding" || ${trigger.toLowerCase()}=="sqloutputbinding")
+        <azure.functions.java.library.sql.version>0.1.1</azure.functions.java.library.sql.version>
+        <jackson.databind.version>2.13.4.1</jackson.databind.version>
+#end
 #if(${trigger.toLowerCase()}=="durablefunctions")
         <durabletask.azure.functions.version>1.0.0</durabletask.azure.functions.version>
 #end
@@ -46,6 +50,18 @@
             <groupId>com.microsoft.azure.functions</groupId>
             <artifactId>azure-functions-java-library-rabbitmq</artifactId>
             <version>${azure.functions.java.library.rabbitmq.version}</version>
+        </dependency>
+#end
+#if(${trigger.toLowerCase()}=="sqlinputbinding" || ${trigger.toLowerCase()}=="sqloutputbinding")
+        <dependency>
+          <groupId>com.microsoft.azure.functions</groupId>
+          <artifactId>azure-functions-java-library-sql</artifactId>
+          <version>${azure.functions.java.library.sql.version}</version>
+        </dependency>
+        <dependency>
+          <groupId>com.fasterxml.jackson.core</groupId>
+          <artifactId>jackson-databind</artifactId>
+          <version>${jackson.databind.version}</version>
         </dependency>
 #end
 #if(${trigger.toLowerCase()}=="durablefunctions")
