@@ -16,7 +16,7 @@
 #else
         <java.version>${javaVersion}</java.version>
 #end
-        <azure.functions.maven.plugin.version>1.24.0-SNAPSHOT</azure.functions.maven.plugin.version>
+        <azure.functions.maven.plugin.version>1.24.0</azure.functions.maven.plugin.version>
 #if(${trigger.toLowerCase()}=="durablefunctions" || ${trigger.toLowerCase()}=="sqlinputbinding" || ${trigger.toLowerCase()}=="sqloutputbinding")
         <azure.functions.java.library.version>3.0.0</azure.functions.java.library.version>
 #else
