@@ -1,6 +1,9 @@
 # Maven Archetypes for Azure
 
-This repo contains Maven Archetypes for Azure. The following table lists all existing Maven Archetypes.
+This repo contains Maven Archetypes for Azure. The following table lists Maven Archetypes for azure services.
+
+> **Note**
+> The Azure SDK maven archetype can be found at [the Azure SDK GitHub repository](https://github.com/Azure/azure-sdk-for-java/tree/main/sdk/tools/azure-sdk-archetype).
 
 Archetype Artifact Id | Archetype Group Id | Maven Central Version
 ---|---|---
