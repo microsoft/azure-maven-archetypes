@@ -30,7 +30,9 @@ def templateMap = [
         "ServiceBusTopicTrigger": "-Dfunctions.template=ServiceBusTopicTrigger -Dconnection=\"<connection>\" -DtopicName=mysbtopic -DsubscriptionName=mysubscription",
         "RabbitMQTrigger"       : "-Dfunctions.template=RabbitMQTrigger -DconnectionStringSetting=\"<connection>\" -DqueueName=myqueue",
         "KafkaTrigger"          : "-Dfunctions.template=KafkaTrigger -Dname=kafkaTrigger -Dtopic=topic -DbrokerList=BrokerList -DconsumerGroup=\$Default -DauthenticationMode=PLAIN -Dprotocol=SASLSSL",
-        "DurableFunctions"      : "-Dfunctions.template=DurableFunctionsOrchestrator"
+        "DurableFunctions"      : "-Dfunctions.template=DurableFunctionsOrchestrator",
+        "SqlOutputBinding"      : "-Dfunctions.template=SqlOutputBinding -Dtable=[dbo].[table1] -DSqlConnectionString=\"<connection>\"",
+        "SqlInputBinding"       : "-Dfunctions.template=SqlInputBinding  -Dtable=[dbo].[table1] -DSqlConnectionString=\"<connection>\""
 ];
 def triggerParameter = templateMap.keySet().stream()
         .filter({ key -> key.equalsIgnoreCase(trigger) || (key.lastIndexOf("Trigger") > 0 && key.substring(0, key.lastIndexOf("Trigger")).equalsIgnoreCase(trigger)) }).findFirst()
