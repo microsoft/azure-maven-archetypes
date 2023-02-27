@@ -32,7 +32,7 @@ def templateMap = [
         "KafkaTrigger"          : "-Dfunctions.template=KafkaTrigger -Dname=kafkaTrigger -Dtopic=topic -DbrokerList=BrokerList -DconsumerGroup=\$Default -DauthenticationMode=PLAIN -Dprotocol=SASLSSL",
         "DurableFunctions"      : "-Dfunctions.template=DurableFunctionsOrchestrator",
         "SqlOutputBinding"      : "-Dfunctions.template=SqlOutputBinding -Dtable=[dbo].[table1] -DSqlConnectionString=\"<connection>\"",
-        "SqlInputBinding"       : "-Dfunctions.template=SqlInputBinding  -Dtable=[dbo].[table1] -DSqlConnectionString=\"<connection>\""
+        "SqlInputBinding"       : "-Dfunctions.template=SqlInputBinding  -Dobject=[dbo].[table1] -DSqlConnectionString=\"<connection>\""
 ];
 def triggerParameter = templateMap.keySet().stream()
         .filter({ key -> key.equalsIgnoreCase(trigger) || (key.lastIndexOf("Trigger") > 0 && key.substring(0, key.lastIndexOf("Trigger")).equalsIgnoreCase(trigger)) }).findFirst()
