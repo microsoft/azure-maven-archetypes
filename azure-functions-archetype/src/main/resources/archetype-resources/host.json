@@ -17,7 +17,7 @@
     "version": "[4.*, 5.0.0)"
   } 
 #end
-#if(${trigger.toLowerCase()}!="sqlinputbinding" && ${trigger.toLowerCase()}!="sqloutputbinding" && ${trigger.toLowerCase()}=="durablefunctions")
+#if(${trigger.toLowerCase()}!="sqlinputbinding" && ${trigger.toLowerCase()}!="sqloutputbinding" && ${trigger.toLowerCase()}!="durablefunctions")
   "extensionBundle": {
     "id": "Microsoft.Azure.Functions.ExtensionBundle",
     "version": "[3.*, 4.0.0)"
