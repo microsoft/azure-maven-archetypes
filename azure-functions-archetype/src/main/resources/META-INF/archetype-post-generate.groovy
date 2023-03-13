@@ -25,7 +25,7 @@ def templateMap = [
         "TimerTrigger"          : "-Dfunctions.template=TimerTrigger -Dschedule=\"0 * * * * *\"",
         "EventGridTrigger"      : "-Dfunctions.template=EventGridTrigger",
         "EventHubTrigger"       : "-Dfunctions.template=EventHubTrigger -Dconnection=\"<connection>\" -DeventHubName=myeventhub -DconsumerGroup=\$Default",
-        "CosmosDBTrigger"       : "-Dfunctions.template=CosmosDBTrigger -DconnectionStringSetting=\"<connection_string_setting>\" -DdatabaseName=\"<databaseName>\" -DcollectionName=\"<collectionName>\" -DleaseCollectionName=\"<leaseCollectionName>\"",
+        "CosmosDBTrigger"       : "-Dfunctions.template=\"CosmosDBTrigger (Bundle V4)\" -DconnectionStringSetting=\"<connection_string_setting>\" -DdatabaseName=\"<databaseName>\" -DcollectionName=\"<collectionName>\" -DleaseCollectionName=\"<leaseCollectionName>\"",
         "ServiceBusQueueTrigger": "-Dfunctions.template=ServiceBusQueueTrigger -Dconnection=\"<connection>\" -DqueueName=mysbqueue",
         "ServiceBusTopicTrigger": "-Dfunctions.template=ServiceBusTopicTrigger -Dconnection=\"<connection>\" -DtopicName=mysbtopic -DsubscriptionName=mysubscription",
         "RabbitMQTrigger"       : "-Dfunctions.template=RabbitMQTrigger -DconnectionStringSetting=\"<connection>\" -DqueueName=myqueue",
