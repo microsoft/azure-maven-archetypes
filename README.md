@@ -16,7 +16,7 @@ Archetype Artifact Id | Archetype Group Id | Maven Central Version
 
 You may be also interested in the [Azure Maven Plugins](https://github.com/microsoft/azure-maven-plugins). These archetypes are very closely related to the plugins, and both kinds of artifacts work together to give you Java your way on Azure.
 
-Of particular interest to users of these archytypes is the `azure-webapp-maven-plugin` and its `config` goal. This goal acts like an archetype. It instruments the current project's POM so that the `target` artifact can subsequently be published to Azure App Service using the `deploy` goal.
+Of particular interest to users of these archetypes is the `azure-webapp-maven-plugin` and its `config` goal. This goal acts like an archetype. It instruments the current project's POM so that the `target` artifact can subsequently be published to Azure App Service using the `deploy` goal.
 
 ### Reporting Issues and Feedback
 If you encounter any bugs with the Maven Archetypes, please file an issue in the [Issues](https://github.com/microsoft/azure-maven-archetypes/issues) section of our GitHub repo.
