@@ -28,7 +28,7 @@
 #end
 #if(${trigger.toLowerCase()}=="sqlinputbinding" || ${trigger.toLowerCase()}=="sqloutputbinding")
         <azure.functions.java.library.sql.version>0.1.1</azure.functions.java.library.sql.version>
-        <jackson.databind.version>2.13.4.1</jackson.databind.version>
+        <jackson.databind.version>2.13.4.2</jackson.databind.version>
 #end
 #if(${trigger.toLowerCase()}=="durablefunctions")
         <durabletask.azure.functions.version>1.0.0</durabletask.azure.functions.version>
