@@ -16,8 +16,8 @@
 #else
         <java.version>${javaVersion}</java.version>
 #end
-        <azure.functions.maven.plugin.version>1.22.0-SNAPSHOT</azure.functions.maven.plugin.version>
-        <azure.functions.java.library.version>2.2.0</azure.functions.java.library.version>
+        <azure.functions.maven.plugin.version>1.26.0</azure.functions.maven.plugin.version>
+        <azure.functions.java.library.version>3.0.0</azure.functions.java.library.version>
 #if(${appName}=="$(artifactId)-$(timestamp)")
         <functionAppName>${artifactId.toLowerCase()}-${package.getClass().forName("java.time.LocalDateTime").getMethod("now").invoke(null).format($package.Class.forName("java.time.format.DateTimeFormatter").getMethod("ofPattern", $package.Class).invoke(null, "yyyyMMddHHmmssSSS"))}</functionAppName>
 #else
@@ -26,8 +26,12 @@
 #if(${trigger.toLowerCase()}=="rabbitmq" || ${trigger.toLowerCase()}=="rabbitmqtrigger")
         <azure.functions.java.library.rabbitmq.version>2.0.3</azure.functions.java.library.rabbitmq.version>
 #end
+#if(${trigger.toLowerCase()}=="sqlinputbinding" || ${trigger.toLowerCase()}=="sqloutputbinding")
+        <azure.functions.java.library.sql.version>0.1.1</azure.functions.java.library.sql.version>
+        <jackson.databind.version>2.13.4.1</jackson.databind.version>
+#end
 #if(${trigger.toLowerCase()}=="durablefunctions")
-        <durabletask.azure.functions.version>1.0.0-beta.1</durabletask.azure.functions.version>
+        <durabletask.azure.functions.version>1.0.0</durabletask.azure.functions.version>
 #end
     </properties>
 
@@ -42,6 +46,18 @@
             <groupId>com.microsoft.azure.functions</groupId>
             <artifactId>azure-functions-java-library-rabbitmq</artifactId>
             <version>${azure.functions.java.library.rabbitmq.version}</version>
+        </dependency>
+#end
+#if(${trigger.toLowerCase()}=="sqlinputbinding" || ${trigger.toLowerCase()}=="sqloutputbinding")
+        <dependency>
+          <groupId>com.microsoft.azure.functions</groupId>
+          <artifactId>azure-functions-java-library-sql</artifactId>
+          <version>${azure.functions.java.library.sql.version}</version>
+        </dependency>
+        <dependency>
+          <groupId>com.fasterxml.jackson.core</groupId>
+          <artifactId>jackson-databind</artifactId>
+          <version>${jackson.databind.version}</version>
         </dependency>
 #end
 #if(${trigger.toLowerCase()}=="durablefunctions")

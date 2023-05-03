@@ -25,17 +25,19 @@ def templateMap = [
         "TimerTrigger"          : "-Dfunctions.template=TimerTrigger -Dschedule=\"0 * * * * *\"",
         "EventGridTrigger"      : "-Dfunctions.template=EventGridTrigger",
         "EventHubTrigger"       : "-Dfunctions.template=EventHubTrigger -Dconnection=\"<connection>\" -DeventHubName=myeventhub -DconsumerGroup=\$Default",
-        "CosmosDBTrigger"       : "-Dfunctions.template=CosmosDBTrigger -DconnectionStringSetting=\"<connection_string_setting>\" -DdatabaseName=\"<databaseName>\" -DcollectionName=\"<collectionName>\" -DleaseCollectionName=\"<leaseCollectionName>\"",
+        "CosmosDBTrigger"       : "-Dfunctions.template=\"CosmosDBTrigger (Bundle V4)\" -DconnectionStringSetting=\"<connection_string_setting>\" -DdatabaseName=\"<databaseName>\" -DcollectionName=\"<collectionName>\" -DleaseCollectionName=\"<leaseCollectionName>\"",
         "ServiceBusQueueTrigger": "-Dfunctions.template=ServiceBusQueueTrigger -Dconnection=\"<connection>\" -DqueueName=mysbqueue",
         "ServiceBusTopicTrigger": "-Dfunctions.template=ServiceBusTopicTrigger -Dconnection=\"<connection>\" -DtopicName=mysbtopic -DsubscriptionName=mysubscription",
         "RabbitMQTrigger"       : "-Dfunctions.template=RabbitMQTrigger -DconnectionStringSetting=\"<connection>\" -DqueueName=myqueue",
         "KafkaTrigger"          : "-Dfunctions.template=KafkaTrigger -Dname=kafkaTrigger -Dtopic=topic -DbrokerList=BrokerList -DconsumerGroup=\$Default -DauthenticationMode=PLAIN -Dprotocol=SASLSSL",
-        "DurableFunctions"      : "-Dfunctions.template=DurableFunctionsOrchestrator"
+        "DurableFunctions"      : "-Dfunctions.template=DurableFunctionsOrchestrator",
+        "SqlOutputBinding"      : "-Dfunctions.template=SqlOutputBinding -Dtable=[dbo].[table1] -DSqlConnectionString=\"<connection>\"",
+        "SqlInputBinding"       : "-Dfunctions.template=SqlInputBinding  -Dobject=[dbo].[table1] -DSqlConnectionString=\"<connection>\""
 ];
 def triggerParameter = templateMap.keySet().stream()
-        .filter({ key -> key.equalsIgnoreCase(trigger) || key.substring(0, key.lastIndexOf("Trigger")).equalsIgnoreCase(trigger) }).findFirst()
+        .filter({ key -> key.equalsIgnoreCase(trigger) || (key.lastIndexOf("Trigger") > 0 && key.substring(0, key.lastIndexOf("Trigger")).equalsIgnoreCase(trigger)) }).findFirst()
         .map(templateMap.&get)
-        .orElseThrow({ ->  new RuntimeException(String.format("Invalid trigger type `%s`, supported values are %s and HttpTrigger", trigger, String.join(",", templateMap.keySet()))) })
+        .orElseThrow({ ->  new RuntimeException(String.format("Invalid trigger type `%s`, supported values are %s and HttpTrigger", trigger, String.join(", ", templateMap.keySet()))) })
 println("Generating trigger from template, which may take some moments. Please replace the values with placeholder in annotation with real value if necessary")
 def pomFile = new File(rootDir, "pom.xml")
 def isWindows = System.properties['os.name'].toLowerCase().contains('windows')
