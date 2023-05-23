@@ -27,7 +27,7 @@
         <azure.functions.java.library.rabbitmq.version>2.0.3</azure.functions.java.library.rabbitmq.version>
 #end
 #if(${trigger.toLowerCase()}=="sqlinputbinding" || ${trigger.toLowerCase()}=="sqloutputbinding")
-        <azure.functions.java.library.sql.version>0.1.1</azure.functions.java.library.sql.version>
+        <azure.functions.java.library.sql.version>1.0.0</azure.functions.java.library.sql.version>
         <jackson.databind.version>2.13.4.2</jackson.databind.version>
 #end
 #if(${trigger.toLowerCase()}=="durablefunctions")
