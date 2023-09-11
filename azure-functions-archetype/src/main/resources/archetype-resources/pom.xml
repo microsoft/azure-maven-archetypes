@@ -33,7 +33,7 @@
 #if(${trigger.toLowerCase()}=="durablefunctions")
         <durabletask.azure.functions.version>1.0.0</durabletask.azure.functions.version>
 #end
-#if(${trigger.toLowerCase()}=="daprbindingtrigger" || ${trigger.toLowerCase()}=="daprserviceinvocationtrigger" || ${trigger.toLowerCase()}=="daprtopictrigger" || ${trigger.toLowerCase()}=="daprstateinputbinding" || ${trigger.toLowerCase()}=="daprsecret" || ${trigger.toLowerCase()}=="daprstateoutputbinding" || ${trigger.toLowerCase()}=="daprinvokeoutputbinding" || ${trigger.toLowerCase()}=="daprpublishoutputbinding" || ${trigger.toLowerCase()}=="daprbindingoutputbinding")
+#if(${trigger.toLowerCase()}=="daprpublishoutputbinding" || ${trigger.toLowerCase()}=="daprserviceinvocationtrigger" || ${trigger.toLowerCase()}=="daprtopictrigger")
         <azure.functions.java.library.dapr.version>v0.15.0-preview01</azure.functions.java.library.dapr.version>
 #end
     </properties>
@@ -70,7 +70,7 @@
             <version>${durabletask.azure.functions.version}</version>
         </dependency>
 #end
-#if(${trigger.toLowerCase()}=="daprbindingtrigger" || ${trigger.toLowerCase()}=="daprserviceinvocationtrigger" || ${trigger.toLowerCase()}=="daprtopictrigger" || ${trigger.toLowerCase()}=="daprstateinputbinding" || ${trigger.toLowerCase()}=="daprsecret" || ${trigger.toLowerCase()}=="daprstateoutputbinding" || ${trigger.toLowerCase()}=="daprinvokeoutputbinding" || ${trigger.toLowerCase()}=="daprpublishoutputbinding" || ${trigger.toLowerCase()}=="daprbindingoutputbinding")
+#if(${trigger.toLowerCase()}=="daprpublishoutputbinding" || ${trigger.toLowerCase()}=="daprserviceinvocationtrigger" || ${trigger.toLowerCase()}=="daprtopictrigger")
         <dependency>
             <groupId>com.microsoft.azure.functions</groupId>
             <artifactId>azure-functions-java-library-dapr</artifactId>
