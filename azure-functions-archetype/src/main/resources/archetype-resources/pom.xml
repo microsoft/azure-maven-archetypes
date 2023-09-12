@@ -34,7 +34,7 @@
         <durabletask.azure.functions.version>1.0.0</durabletask.azure.functions.version>
 #end
 #if(${trigger.toLowerCase()}=="daprpublishoutputbinding" || ${trigger.toLowerCase()}=="daprserviceinvocationtrigger" || ${trigger.toLowerCase()}=="daprtopictrigger")
-        <azure.functions.java.library.dapr.version>v0.15.0-preview01</azure.functions.java.library.dapr.version>
+        <azure.functions.java.library.dapr.version>0.15.0-preview01</azure.functions.java.library.dapr.version>
 #end
     </properties>
 
@@ -75,6 +75,11 @@
             <groupId>com.microsoft.azure.functions</groupId>
             <artifactId>azure-functions-java-library-dapr</artifactId>
             <version>${azure.functions.java.library.dapr.version}</version>
+        </dependency>
+        <dependency>
+          <groupId>com.fasterxml.jackson.core</groupId>
+          <artifactId>jackson-databind</artifactId>
+          <version>${jackson.databind.version}</version>
         </dependency>
 #end
         <!-- Test -->
