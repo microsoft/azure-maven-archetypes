@@ -35,6 +35,7 @@
 #end
 #if(${trigger.toLowerCase()}=="daprpublishoutputbinding" || ${trigger.toLowerCase()}=="daprserviceinvocationtrigger" || ${trigger.toLowerCase()}=="daprtopictrigger")
         <azure.functions.java.library.dapr.version>0.15.0-preview01</azure.functions.java.library.dapr.version>
+        <jackson.databind.version>2.13.4.2</jackson.databind.version>
 #end
     </properties>
 
