@@ -34,7 +34,7 @@
         <durabletask.azure.functions.version>1.0.0</durabletask.azure.functions.version>
 #end
 #if(${trigger.toLowerCase()}=="daprpublishoutputbinding" || ${trigger.toLowerCase()}=="daprserviceinvocationtrigger" || ${trigger.toLowerCase()}=="daprtopictrigger")
-        <azure.functions.java.library.dapr.version>0.16.0-preview01</azure.functions.java.library.dapr.version>
+        <azure.functions.java.library.dapr.version>0.17.0-preview01</azure.functions.java.library.dapr.version>
         <jackson.databind.version>2.13.4.2</jackson.databind.version>
 #end
     </properties>
