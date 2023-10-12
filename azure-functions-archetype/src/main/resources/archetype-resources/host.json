@@ -6,6 +6,12 @@
       "hubName": "JavaTestHub"
     }
   },
+#end
+#if(${trigger.toLowerCase().contains("dapr")})
+  "extensionBundle": {
+    "id": "Microsoft.Azure.Functions.ExtensionBundle.Preview",
+    "version": "[4.*, 5.0.0)"
+  }
 #else
   "extensionBundle": {
     "id": "Microsoft.Azure.Functions.ExtensionBundle",
