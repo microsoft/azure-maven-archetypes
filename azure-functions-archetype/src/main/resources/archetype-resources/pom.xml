@@ -16,7 +16,7 @@
 #else
         <java.version>${javaVersion}</java.version>
 #end
-        <azure.functions.maven.plugin.version>1.28.0</azure.functions.maven.plugin.version>
+        <azure.functions.maven.plugin.version>1.29.0</azure.functions.maven.plugin.version>
         <azure.functions.java.library.version>3.0.0</azure.functions.java.library.version>
 #if(${appName}=="$(artifactId)-$(timestamp)")
         <functionAppName>${artifactId.toLowerCase()}-${package.getClass().forName("java.time.LocalDateTime").getMethod("now").invoke(null).format($package.Class.forName("java.time.format.DateTimeFormatter").getMethod("ofPattern", $package.Class).invoke(null, "yyyyMMddHHmmssSSS"))}</functionAppName>
@@ -26,16 +26,20 @@
 #if(${trigger.toLowerCase()}=="rabbitmq" || ${trigger.toLowerCase()}=="rabbitmqtrigger")
         <azure.functions.java.library.rabbitmq.version>2.0.3</azure.functions.java.library.rabbitmq.version>
 #end
-#if(${trigger.toLowerCase()}=="sqlinputbinding" || ${trigger.toLowerCase()}=="sqloutputbinding")
-        <azure.functions.java.library.sql.version>1.0.0</azure.functions.java.library.sql.version>
-        <jackson.databind.version>2.13.4.2</jackson.databind.version>
+#if(${trigger.toLowerCase().startsWith("sql")})
+        <azure.functions.java.library.sql.version>2.1.0</azure.functions.java.library.sql.version>
 #end
 #if(${trigger.toLowerCase()}=="durablefunctions")
         <durabletask.azure.functions.version>1.0.0</durabletask.azure.functions.version>
 #end
-#if(${trigger.toLowerCase()}=="daprpublishoutputbinding" || ${trigger.toLowerCase()}=="daprserviceinvocationtrigger" || ${trigger.toLowerCase()}=="daprtopictrigger")
+#if(${trigger.toLowerCase().startsWith("dapr")})
         <azure.functions.java.library.dapr.version>0.17.0-preview01</azure.functions.java.library.dapr.version>
+#end
+#if(${trigger.toLowerCase().startsWith("dapr")} || ${trigger.toLowerCase()}=="sqloutputbinding")
         <jackson.databind.version>2.13.4.2</jackson.databind.version>
+#end
+#if(${trigger.toLowerCase()}=="sqltrigger" || ${trigger.toLowerCase()}=="sql")
+        <gson.version>2.10.1</gson.version>
 #end
     </properties>
 
@@ -52,16 +56,11 @@
             <version>${azure.functions.java.library.rabbitmq.version}</version>
         </dependency>
 #end
-#if(${trigger.toLowerCase()}=="sqlinputbinding" || ${trigger.toLowerCase()}=="sqloutputbinding")
+#if(${trigger.toLowerCase().startsWith("sql")})
         <dependency>
           <groupId>com.microsoft.azure.functions</groupId>
           <artifactId>azure-functions-java-library-sql</artifactId>
           <version>${azure.functions.java.library.sql.version}</version>
-        </dependency>
-        <dependency>
-          <groupId>com.fasterxml.jackson.core</groupId>
-          <artifactId>jackson-databind</artifactId>
-          <version>${jackson.databind.version}</version>
         </dependency>
 #end
 #if(${trigger.toLowerCase()}=="durablefunctions")
@@ -71,16 +70,25 @@
             <version>${durabletask.azure.functions.version}</version>
         </dependency>
 #end
-#if(${trigger.toLowerCase()}=="daprpublishoutputbinding" || ${trigger.toLowerCase()}=="daprserviceinvocationtrigger" || ${trigger.toLowerCase()}=="daprtopictrigger")
+#if(${trigger.toLowerCase().startsWith("dapr")})
         <dependency>
             <groupId>com.microsoft.azure.functions</groupId>
             <artifactId>azure-functions-java-library-dapr</artifactId>
             <version>${azure.functions.java.library.dapr.version}</version>
         </dependency>
+#end
+#if(${trigger.toLowerCase().startsWith("dapr")} || ${trigger.toLowerCase()}=="sqloutputbinding")
         <dependency>
           <groupId>com.fasterxml.jackson.core</groupId>
           <artifactId>jackson-databind</artifactId>
           <version>${jackson.databind.version}</version>
+        </dependency>
+#end
+#if(${trigger.toLowerCase()}=="sqltrigger" || ${trigger.toLowerCase()}=="sql")
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>${gson.version}</version>
         </dependency>
 #end
         <!-- Test -->
