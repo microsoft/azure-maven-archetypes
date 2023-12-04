@@ -53,15 +53,14 @@ Parameter Name | Default Value | Description
 `appRegion` | `westus` | The region of your Azure Functions, which will be used when creating the new Azure Functions.
 `appServicePlanName` | `java-functions-app-service-plan` | The the app service plan of your Azure Functions, which will be used when creating the new Azure Functions.
 `resourceGroup` | `java-functions-group` | The the resource group of your Azure Functions, which will be used when creating the new Azure Functions.
-`javaVersion` | `8` | The the function host java version as well as the project compile level, supported values are `8`, `11` or `17`.
+`javaVersion` | `17` | The the function host java version as well as the project compile level, supported values are `8`, `11` or `17`.
 `docker` | `false` | The whether to enable docker support in your function project.
-`trigger` | `HttpTrigger` | Specify the trigger type of Azure Function, supported values are `HttpTrigger`, `BlobTrigger`, `QueueTrigger`, `TimerTrigger`, `EventGridTrigger`, `EventHubTrigger`, `CosmosDBTrigger`, `ServiceBusQueueTrigger`, `ServiceBusTopicTrigger`, `SqlOutputBinding`, `SqlInputBinding` and `DurableFunctions`.
-
+`trigger` | `HttpTrigger` | Specify the trigger type of Azure Function, supported values are `HttpTrigger`, `BlobTrigger`, `QueueTrigger`, `TimerTrigger`, `EventGridTrigger`, `EventHubTrigger`, `CosmosDBTrigger`, `ServiceBusQueueTrigger`, `ServiceBusTopicTrigger`, `RabbitMQTrigger`, `KafkaTrigger`, `DurableFunctions`, `SqlOutputBinding`, `SqlInputBinding`, `SqlTrigger`, `DaprPublishOutputBinding`, `DaprServiceInvocationTrigger` and `DaprTopicTrigger`.
 
 ## System Requirements
 Azure Functions Core Tools | Azure CLI | Java SE | Maven
 ---------|---------|---------|---------
-[2.7.2796+](https://github.com/Azure/azure-functions-core-tools/releases/tag/2.7.2796)/[3.0.2798+](https://github.com/Azure/azure-functions-core-tools/releases/tag/3.0.2798) | 2.4+ | 8,11 | 3.3.3+
+[2.7.2796+](https://github.com/Azure/azure-functions-core-tools/releases/tag/2.7.2796)/[3.0.2798+](https://github.com/Azure/azure-functions-core-tools/releases/tag/3.0.2798) | 2.4+ | 8,11,17 | 3.3.3+
 
 ## More Information
 For more information about how to build/test the function project, please refer to the documents of [Maven Plugin for Azure Functions](https://github.com/Microsoft/azure-maven-plugins/blob/master/azure-functions-maven-plugin/README.md).
