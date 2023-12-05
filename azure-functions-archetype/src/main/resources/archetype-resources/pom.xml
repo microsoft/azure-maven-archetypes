@@ -35,10 +35,10 @@
 #if(${trigger.toLowerCase().startsWith("dapr")})
         <azure.functions.java.library.dapr.version>0.17.0-preview01</azure.functions.java.library.dapr.version>
 #end
-#if(${trigger.toLowerCase().startsWith("dapr")} || ${trigger.toLowerCase()}=="sqloutputbinding")
+#if(${trigger.toLowerCase().startsWith("dapr")})
         <jackson.databind.version>2.13.4.2</jackson.databind.version>
 #end
-#if(${trigger.toLowerCase()}=="sqltrigger" || ${trigger.toLowerCase()}=="sql")
+#if(${trigger.toLowerCase()}=="sqltrigger" || ${trigger.toLowerCase()}=="sql" || ${trigger.toLowerCase()}=="sqloutputbinding")
         <gson.version>2.10.1</gson.version>
 #end
     </properties>
@@ -77,14 +77,14 @@
             <version>${azure.functions.java.library.dapr.version}</version>
         </dependency>
 #end
-#if(${trigger.toLowerCase().startsWith("dapr")} || ${trigger.toLowerCase()}=="sqloutputbinding")
+#if(${trigger.toLowerCase().startsWith("dapr")})
         <dependency>
           <groupId>com.fasterxml.jackson.core</groupId>
           <artifactId>jackson-databind</artifactId>
           <version>${jackson.databind.version}</version>
         </dependency>
 #end
-#if(${trigger.toLowerCase()}=="sqltrigger" || ${trigger.toLowerCase()}=="sql")
+#if(${trigger.toLowerCase()}=="sqltrigger" || ${trigger.toLowerCase()}=="sql" || ${trigger.toLowerCase()}=="sqloutputbinding")
         <dependency>
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
