@@ -20,22 +20,23 @@ def sourceFolder = new File(rootDir, "src")
 sourceFolder.deleteDir()
 // todo: remove the parameter with default values, may need to update maven plugin
 def templateMap = [
-        "BlobTrigger"           : "-Dfunctions.template=BlobTrigger -Dconnection=\"<connection>\" -Dpath=mycontainer",
-        "QueueTrigger"          : "-Dfunctions.template=QueueTrigger -Dconnection=\"<connection>\" -DqueueName=myqueue",
-        "TimerTrigger"          : "-Dfunctions.template=TimerTrigger -Dschedule=\"0 * * * * *\"",
-        "EventGridTrigger"      : "-Dfunctions.template=EventGridTrigger",
-        "EventHubTrigger"       : "-Dfunctions.template=EventHubTrigger -Dconnection=\"<connection>\" -DeventHubName=myeventhub -DconsumerGroup=\$Default",
-        "CosmosDBTrigger"       : "-Dfunctions.template=\"CosmosDBTrigger (Bundle V4)\" -DconnectionStringSetting=\"<connection_string_setting>\" -DdatabaseName=\"<databaseName>\" -DcollectionName=\"<collectionName>\" -DleaseCollectionName=\"<leaseCollectionName>\"",
-        "ServiceBusQueueTrigger": "-Dfunctions.template=ServiceBusQueueTrigger -Dconnection=\"<connection>\" -DqueueName=mysbqueue",
-        "ServiceBusTopicTrigger": "-Dfunctions.template=ServiceBusTopicTrigger -Dconnection=\"<connection>\" -DtopicName=mysbtopic -DsubscriptionName=mysubscription",
-        "RabbitMQTrigger"       : "-Dfunctions.template=RabbitMQTrigger -DconnectionStringSetting=\"<connection>\" -DqueueName=myqueue",
-        "KafkaTrigger"          : "-Dfunctions.template=KafkaTrigger -Dname=kafkaTrigger -Dtopic=topic -DbrokerList=BrokerList -DconsumerGroup=\$Default -DauthenticationMode=PLAIN -Dprotocol=SASLSSL",
-        "DurableFunctions"      : "-Dfunctions.template=DurableFunctionsOrchestrator",
-        "SqlOutputBinding"      : "-Dfunctions.template=SqlOutputBinding -Dtable=[dbo].[table1] -DSqlConnectionString=\"<connection>\"",
-        "SqlInputBinding"       : "-Dfunctions.template=SqlInputBinding  -Dobject=[dbo].[table1] -DSqlConnectionString=\"<connection>\"",
+        "BlobTrigger"                   : "-Dfunctions.template=BlobTrigger -Dconnection=\"<connection>\" -Dpath=mycontainer",
+        "QueueTrigger"                  : "-Dfunctions.template=QueueTrigger -Dconnection=\"<connection>\" -DqueueName=myqueue",
+        "TimerTrigger"                  : "-Dfunctions.template=TimerTrigger -Dschedule=\"0 * * * * *\"",
+        "EventGridTrigger"              : "-Dfunctions.template=EventGridTrigger",
+        "EventHubTrigger"               : "-Dfunctions.template=EventHubTrigger -Dconnection=\"<connection>\" -DeventHubName=myeventhub -DconsumerGroup=\$Default",
+        "CosmosDBTrigger"               : "-Dfunctions.template=\"CosmosDBTrigger (Bundle V4)\" -DconnectionStringSetting=\"<connection_string_setting>\" -DdatabaseName=\"<databaseName>\" -DcollectionName=\"<collectionName>\" -DleaseCollectionName=\"<leaseCollectionName>\"",
+        "ServiceBusQueueTrigger"        : "-Dfunctions.template=ServiceBusQueueTrigger -Dconnection=\"<connection>\" -DqueueName=mysbqueue",
+        "ServiceBusTopicTrigger"        : "-Dfunctions.template=ServiceBusTopicTrigger -Dconnection=\"<connection>\" -DtopicName=mysbtopic -DsubscriptionName=mysubscription",
+        "RabbitMQTrigger"               : "-Dfunctions.template=RabbitMQTrigger -DconnectionStringSetting=\"<connection>\" -DqueueName=myqueue",
+        "KafkaTrigger"                  : "-Dfunctions.template=KafkaTrigger -Dname=kafkaTrigger -Dtopic=topic -DbrokerList=BrokerList -DconsumerGroup=\$Default -DauthenticationMode=PLAIN -Dprotocol=SASLSSL",
+        "DurableFunctions"              : "-Dfunctions.template=DurableFunctionsOrchestrator",
+        "SqlOutputBinding"              : "-Dfunctions.template=SqlOutputBinding -Dtable=[dbo].[table1] -DSqlConnectionString=\"<connection>\"",
+        "SqlInputBinding"               : "-Dfunctions.template=SqlInputBinding  -Dobject=[dbo].[table1] -DSqlConnectionString=\"<connection>\"",
         "DaprPublishOutputBinding"      : "-Dfunctions.template=DaprPublishOutputBinding",
-        "DaprServiceInvocationTrigger"       : "-Dfunctions.template=DaprServiceInvocationTrigger",
-        "DaprTopicTrigger"       : "-Dfunctions.template=DaprTopicTrigger"
+        "DaprServiceInvocationTrigger"  : "-Dfunctions.template=DaprServiceInvocationTrigger",
+        "DaprTopicTrigger"              : "-Dfunctions.template=DaprTopicTrigger",
+        "SqlTrigger"                    : "-Dfunctions.template=SqlTrigger -Dtable=[dbo].[table1] -DSqlConnectionString=\"<connection>\""
 ];
 def triggerParameter = templateMap.keySet().stream()
         .filter({ key -> key.equalsIgnoreCase(trigger) || (key.lastIndexOf("Trigger") > 0 && key.substring(0, key.lastIndexOf("Trigger")).equalsIgnoreCase(trigger)) }).findFirst()

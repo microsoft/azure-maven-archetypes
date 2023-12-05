@@ -7,7 +7,7 @@
     }
   },
 #end
-#if(${trigger.toLowerCase().contains("dapr")})
+#if(${trigger.toLowerCase().startsWith("dapr")} || ${trigger.toLowerCase()}=="sqltrigger" || ${trigger.toLowerCase()}=="sql")
   "extensionBundle": {
     "id": "Microsoft.Azure.Functions.ExtensionBundle.Preview",
     "version": "[4.*, 5.0.0)"
