@@ -53,7 +53,7 @@ Parameter Name | Default Value | Description
 `appRegion` | `westus` | The region of your Azure Functions, which will be used when creating the new Azure Functions.
 `appServicePlanName` | `java-functions-app-service-plan` | The the app service plan of your Azure Functions, which will be used when creating the new Azure Functions.
 `resourceGroup` | `java-functions-group` | The the resource group of your Azure Functions, which will be used when creating the new Azure Functions.
-`javaVersion` | `17` | The the function host java version as well as the project compile level, supported values are `8`, `11` or `17`.
+`javaVersion` | `17` | The the function host java version as well as the project compile level, supported values are `8`, `11`, `17` or `21` (Linux only).
 `docker` | `false` | The whether to enable docker support in your function project.
 `trigger` | `HttpTrigger` | Specify the trigger type of Azure Function, supported values are `HttpTrigger`, `BlobTrigger`, `QueueTrigger`, `TimerTrigger`, `EventGridTrigger`, `EventHubTrigger`, `CosmosDBTrigger`, `ServiceBusQueueTrigger`, `ServiceBusTopicTrigger`, `RabbitMQTrigger`, `KafkaTrigger`, `DurableFunctions`, `SqlOutputBinding`, `SqlInputBinding`, `SqlTrigger`, `DaprPublishOutputBinding`, `DaprServiceInvocationTrigger` and `DaprTopicTrigger`.
 
