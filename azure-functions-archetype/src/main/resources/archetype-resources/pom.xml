@@ -16,7 +16,7 @@
 #else
         <java.version>${javaVersion}</java.version>
 #end
-        <azure.functions.maven.plugin.version>1.34.0</azure.functions.maven.plugin.version>
+        <azure.functions.maven.plugin.version>1.35.0</azure.functions.maven.plugin.version>
         <azure.functions.java.library.version>3.1.0</azure.functions.java.library.version>
 #if(${appName}=="$(artifactId)-$(timestamp)")
         <functionAppName>${artifactId.toLowerCase()}-${package.getClass().forName("java.time.LocalDateTime").getMethod("now").invoke(null).format($package.Class.forName("java.time.format.DateTimeFormatter").getMethod("ofPattern", $package.Class).invoke(null, "yyyyMMddHHmmssSSS"))}</functionAppName>
