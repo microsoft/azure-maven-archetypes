@@ -6,7 +6,7 @@
 
     <groupId>com.microsoft.azure</groupId>
     <artifactId>azure-maven-archetypes</artifactId>
-    <version>1.61-SNAPSHOT</version>
+    <version>1.62-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>Maven Archetypes for Azure</name>
     <description>Maven Archetypes for Microsoft Azure services</description>

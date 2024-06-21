@@ -6,7 +6,7 @@
 
     <groupId>com.microsoft.azure</groupId>
     <artifactId>azure-functions-archetype</artifactId>
-    <version>1.61</version>
+    <version>1.62</version>
     <packaging>jar</packaging>
 
     <name>Maven Archetype for Azure Functions</name>
