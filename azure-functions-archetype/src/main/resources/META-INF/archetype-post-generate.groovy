@@ -5,7 +5,8 @@ import java.nio.file.Paths;
 def rootDir = Paths.get(request.getOutputDirectory(), artifactId).toFile()
 
 def isDocker = request.getProperties().get("docker")
-if (!Boolean.valueOf(isDocker)) {
+def isContainer = request.getProperties().get("container")
+if (!Boolean.valueOf(isDocker) && !Boolean.valueOf(isContainer)) {
     def artifactId = request.getProperties().get("artifactId")
     def dockerFile = "Dockerfile"
     Files.deleteIfExists(new File(rootDir, dockerFile).toPath()) // Delete Dockerfile for none-docker project

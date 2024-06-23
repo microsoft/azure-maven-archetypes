@@ -128,23 +128,31 @@
                     <appName>${functionAppName}</appName>
                     <!-- function app resource group -->
                     <resourceGroup>${resourceGroup}</resourceGroup>
-                    <!-- function app service plan name -->
-                    <appServicePlanName>${appServicePlanName}</appServicePlanName>
                     <!-- function app region-->
                     <!-- refers https://github.com/microsoft/azure-maven-plugins/wiki/Azure-Functions:-Configuration-Details#supported-regions for all valid values -->
                     <region>${appRegion}</region>
+#if(${container}==true)
+                    <!-- Name of the container app environment. It will be created if it doesn't exist -->
+                    <environment>env-${functionAppName}</environment>
+#else
+                    <!-- function app service plan name -->
+                    <appServicePlanName>${appServicePlanName}</appServicePlanName>
+#end
+#if(${docker}==true)
                     <!-- function pricingTier, default to be consumption if not specified -->
                     <!-- refers https://github.com/microsoft/azure-maven-plugins/wiki/Azure-Functions:-Configuration-Details#supported-pricing-tiers for all valid values -->
-#if(${docker}==true)
                     <pricingTier>EP1</pricingTier>
-#else
+#end
+#if(!(${container}==true || ${docker}==true))
+                    <!-- function pricingTier, default to be consumption if not specified -->
+                    <!-- refers https://github.com/microsoft/azure-maven-plugins/wiki/Azure-Functions:-Configuration-Details#supported-pricing-tiers for all valid values -->
                     <!-- <pricingTier></pricingTier> -->
 #end
                     <!-- Whether to disable application insights, default is false -->
                     <!-- refers https://github.com/microsoft/azure-maven-plugins/wiki/Azure-Functions:-Configuration-Details for all valid configurations for application insights-->
                     <!-- <disableAppInsights></disableAppInsights> -->
                     <runtime>
-#if(${docker}==true) 
+#if(${docker}==true || ${container}==true ) 
                         <os>docker</os>
                         <image>[hub-user/]repo-name[:tag]</image>
                         <serverId></serverId>

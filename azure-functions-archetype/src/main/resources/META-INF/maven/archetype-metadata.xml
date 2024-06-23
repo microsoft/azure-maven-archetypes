@@ -15,6 +15,10 @@
             <defaultValue>false</defaultValue>
         </requiredProperty>
 
+        <requiredProperty key="container">
+            <defaultValue>false</defaultValue>
+        </requiredProperty>
+
         <!-- Azure related parameters, provide default values but not prompt users -->
         <requiredProperty key="appName">
             <defaultValue>$(artifactId)-$(timestamp)</defaultValue>
