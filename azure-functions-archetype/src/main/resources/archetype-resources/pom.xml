@@ -31,7 +31,7 @@
 #end
 #set($openaiBindings = ["assistantskilltrigger", "assistantcreate", "assistantquery", "assistantpost", "embeddingsinput", "embeddingsstoreoutput", "semanticsearch", "textcompletion"])
 #if($openaiBindings.contains(${trigger.toLowerCase()}))
-        <azure.functions.java.library.openai.version>0.3.0-preview</azure.functions.java.library.openai.version>
+        <azure.functions.java.library.openai.version>0.4.0-preview</azure.functions.java.library.openai.version>
 #end
 #if(${trigger.toLowerCase()}=="durablefunctions")
         <durabletask.azure.functions.version>1.0.0</durabletask.azure.functions.version>
