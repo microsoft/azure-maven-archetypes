@@ -16,7 +16,7 @@
 #else
         <java.version>${javaVersion}</java.version>
 #end
-        <azure.functions.maven.plugin.version>1.36.0</azure.functions.maven.plugin.version>
+        <azure.functions.maven.plugin.version>1.37.0</azure.functions.maven.plugin.version>
         <azure.functions.java.library.version>3.1.0</azure.functions.java.library.version>
 #if(${appName}=="$(artifactId)-$(timestamp)")
         <functionAppName>${artifactId.toLowerCase()}-${package.getClass().forName("java.time.LocalDateTime").getMethod("now").invoke(null).format($package.Class.forName("java.time.format.DateTimeFormatter").getMethod("ofPattern", $package.Class).invoke(null, "yyyyMMddHHmmssSSS"))}</functionAppName>
@@ -28,6 +28,10 @@
 #end
 #if(${trigger.toLowerCase().startsWith("sql")})
         <azure.functions.java.library.sql.version>2.1.0</azure.functions.java.library.sql.version>
+#end
+#set($openaiBindings = ["assistantskilltrigger", "assistantcreate", "assistantquery", "assistantpost", "embeddingsinput", "embeddingsstoreoutput", "semanticsearch", "textcompletion"])
+#if($openaiBindings.contains(${trigger.toLowerCase()}))
+        <azure.functions.java.library.openai.version>0.4.0-preview</azure.functions.java.library.openai.version>
 #end
 #if(${trigger.toLowerCase()}=="durablefunctions")
         <durabletask.azure.functions.version>1.0.0</durabletask.azure.functions.version>
@@ -61,6 +65,13 @@
           <groupId>com.microsoft.azure.functions</groupId>
           <artifactId>azure-functions-java-library-sql</artifactId>
           <version>${azure.functions.java.library.sql.version}</version>
+        </dependency>
+#end
+#if($openaiBindings.contains(${trigger.toLowerCase()}))
+        <dependency>
+          <groupId>com.microsoft.azure.functions</groupId>
+          <artifactId>azure-functions-java-library-openai</artifactId>
+          <version>${azure.functions.java.library.openai.version}</version>
         </dependency>
 #end
 #if(${trigger.toLowerCase()}=="durablefunctions")

@@ -7,7 +7,8 @@
     }
   },
 #end
-#if(${trigger.toLowerCase().startsWith("dapr")} || ${trigger.toLowerCase()}=="sqltrigger" || ${trigger.toLowerCase()}=="sql")
+#set($openaiBindings = ["assistantskilltrigger", "assistantcreate", "assistantquery", "assistantpost", "embeddingsinput", "embeddingsstoreoutput", "semanticsearch", "textcompletion"])
+#if(${trigger.toLowerCase().startsWith("dapr")} || ${trigger.toLowerCase()}=="sqltrigger" || ${trigger.toLowerCase()}=="sql" || $openaiBindings.contains(${trigger.toLowerCase()}))
   "extensionBundle": {
     "id": "Microsoft.Azure.Functions.ExtensionBundle.Preview",
     "version": "[4.*, 5.0.0)"
