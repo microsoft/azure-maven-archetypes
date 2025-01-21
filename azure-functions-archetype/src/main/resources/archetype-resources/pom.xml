@@ -45,6 +45,9 @@
 #if(${trigger.toLowerCase()}=="sqltrigger" || ${trigger.toLowerCase()}=="sql" || ${trigger.toLowerCase()}=="sqloutputbinding")
         <gson.version>2.10.1</gson.version>
 #end
+#if(${trigger.toLowerCase()}=="embeddingsinput" || ${trigger.toLowerCase()}=="semanticsearch")
+        <json.version>20250107</json.version>
+#end
     </properties>
 
     <dependencies>
@@ -93,6 +96,13 @@
           <groupId>com.fasterxml.jackson.core</groupId>
           <artifactId>jackson-databind</artifactId>
           <version>${jackson.databind.version}</version>
+        </dependency>
+#end
+#if(${trigger.toLowerCase()}=="embeddingsinput" || ${trigger.toLowerCase()}=="semanticsearch")
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>${json.version}</version>
         </dependency>
 #end
 #if(${trigger.toLowerCase()}=="sqltrigger" || ${trigger.toLowerCase()}=="sql" || ${trigger.toLowerCase()}=="sqloutputbinding")
