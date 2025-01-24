@@ -31,18 +31,15 @@ class HttpResponseMessageMock(private val httpStatus: HttpStatusType, private va
 
     class HttpResponseMessageBuilderMock : HttpResponseMessage.Builder {
         private var body: Any? = null
-        private var httpStatusCode: Int = 0
         private val headers: MutableMap<String, String>? = null
         private var httpStatus: HttpStatusType? = null
 
         fun status(status: HttpStatus): HttpResponseMessage.Builder {
-            this.httpStatusCode = status.value()
             this.httpStatus = status
             return this
         }
 
         override fun status(httpStatusType: HttpStatusType): HttpResponseMessage.Builder {
-            this.httpStatusCode = httpStatusType.value()
             this.httpStatus = httpStatusType
             return this
         }
