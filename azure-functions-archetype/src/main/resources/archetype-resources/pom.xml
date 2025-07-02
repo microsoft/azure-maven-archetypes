@@ -179,8 +179,9 @@
                         <serverId></serverId>
                         <registryUrl></registryUrl>
 #else
-                        <!-- runtime os, could be windows, linux or docker-->
-                        <os>windows</os>
+                        <!-- runtime os, could be windows, linux (default) or docker-->
+                        <!-- <os>linux</os> -->
+                        <!-- runtime Java version, could be 8, 11, 17, 21 (default) -->
                         <javaVersion>${javaVersion}</javaVersion>
 #end
                     </runtime>
