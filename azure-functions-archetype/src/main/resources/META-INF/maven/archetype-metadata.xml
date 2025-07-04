@@ -37,7 +37,7 @@
         </requiredProperty>
 
         <requiredProperty key="javaVersion">
-            <defaultValue>17</defaultValue>
+            <defaultValue>21</defaultValue>
         </requiredProperty>
 
         <requiredProperty key="trigger">
