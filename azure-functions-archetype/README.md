@@ -56,7 +56,7 @@ Parameter Name | Default Value | Description
 `javaVersion` | `17` | The the function host java version as well as the project compile level, supported values are `8`, `11`, `17` or `21` (Linux only).
 `docker` | `false` | The whether to enable docker support in your function project.
 `trigger` | `HttpTrigger` | Specify the trigger type of Azure Function, supported values are `HttpTrigger`, `BlobTrigger`, `QueueTrigger`, `TimerTrigger`, `EventGridTrigger`, `EventHubTrigger`, `CosmosDBTrigger`, `ServiceBusQueueTrigger`, `ServiceBusTopicTrigger`, `RabbitMQTrigger`, `KafkaTrigger`, `DurableFunctions`, `SqlOutputBinding`, `SqlInputBinding`, `SqlTrigger`, `DaprPublishOutputBinding`, `DaprServiceInvocationTrigger`,
-, `DaprTopicTrigger`, `AssistantSkillTrigger`, `AssistantCreate`, `AssistantQuery`, `AssistantPost`, `EmbeddingsInput`, `EmbeddingsStoreOutput`, `SemanticSearch`, `TextCompletion`
+, `DaprTopicTrigger`, `AssistantSkillTrigger`, `AssistantCreate`, `AssistantQuery`, `AssistantPost`, `EmbeddingsInput`, `EmbeddingsStoreOutput`, `SemanticSearch`, `TextCompletion`, `McpToolTrigger`
 
 ## System Requirements
 Azure Functions Core Tools | Azure CLI | Java SE | Maven

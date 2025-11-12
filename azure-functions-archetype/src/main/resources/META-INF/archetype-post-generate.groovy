@@ -45,7 +45,8 @@ def templateMap = [
         "EmbeddingsInput"               : "-Dfunctions.template=EmbeddingsInput -Dname=\"<name>\" -Dmodel=\"<model>\" -DmaxChunkLength=\"<maxChunkLength>\" -DmaxOverlap=\"<maxOverlap>\" -Dinput=\"<input>\" -DinputType=\"<inputType>\"",
         "EmbeddingsStoreOutput"         : "-Dfunctions.template=EmbeddingsStoreOutput -Dname=\"<name>\" -Dmodel=\"<model>\" -DmaxChunkLength=\"<maxChunkLength>\" -DmaxOverlap=\"<maxOverlap>\" -Dinput=\"<input>\" -DinputType=\"<inputType>\" -DconnectionName=\"<connectionName>\" -Dcollection=\"<collection>\"",
         "SemanticSearch"                : "-Dfunctions.template=SemanticSearch -Dname=\"<name>\" -DconnectionName=\"<connectionName>\" -Dcollection=\"<collection>\" -Dquery=\"<query>\" -DembeddingsModel=\"<embeddingsModel>\" -DchatModel=\"<chatModel>\" -DsystemPrompt=\"<systemPrompt>\" -DmaxKnowledgeLength=\"<maxKnowledgeLength>\"",
-        "TextCompletion"                : "-Dfunctions.template=TextCompletion -Dname=\"<name>\" -Dprompt=\"<prompt>\" -Dmodel=\"<model>\" -Dtemperature=\"<temperature>\" -DtopP=\"<topP>\" -DmaxTokens=\"<maxTokens>\""
+        "TextCompletion"                : "-Dfunctions.template=TextCompletion -Dname=\"<name>\" -Dprompt=\"<prompt>\" -Dmodel=\"<model>\" -Dtemperature=\"<temperature>\" -DtopP=\"<topP>\" -DmaxTokens=\"<maxTokens>\"",
+        "McpToolTrigger"                : "-Dfunctions.template=McpToolTrigger -DtoolName=\"<toolName>\" -DtoolDescription=\"<toolDescription>\""
 ]
 def triggerParameter = templateMap.keySet().stream()
         .filter({ key -> key.equalsIgnoreCase(trigger) || (key.lastIndexOf("Trigger") > 0 && key.substring(0, key.lastIndexOf("Trigger")).equalsIgnoreCase(trigger)) }).findFirst()
