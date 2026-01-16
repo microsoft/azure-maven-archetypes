@@ -29,7 +29,7 @@ public class HttpResponseMessageMock implements HttpResponseMessage {
 
     @Override
     public int getStatusCode() {
-        return httpStatusCode;
+        return this.httpStatusCode;
     }
 
     @Override
@@ -44,19 +44,16 @@ public class HttpResponseMessageMock implements HttpResponseMessage {
 
     public static class HttpResponseMessageBuilderMock implements HttpResponseMessage.Builder {
         private Object body;
-        private int httpStatusCode;
         private Map<String, String> headers = new HashMap<>();
         private HttpStatusType httpStatus;
 
         public Builder status(HttpStatus status) {
-            this.httpStatusCode = status.value();
             this.httpStatus = status;
             return this;
         }
 
         @Override
         public Builder status(HttpStatusType httpStatusType) {
-            this.httpStatusCode = httpStatusType.value();
             this.httpStatus = httpStatusType;
             return this;
         }
